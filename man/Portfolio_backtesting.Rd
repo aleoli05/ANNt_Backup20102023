@@ -3,16 +3,16 @@
 \name{Portfolio_backtesting}
 \alias{Portfolio_backtesting}
 \title{Portfolio_backtesting
-Realize the portfolio backtesting}
+Realize the portfolio backtest.}
 \usage{
 Portfolio_backtesting()
 }
 \arguments{
-\item{()}{No require parameters}
+\item{()}{no required parameters}
 }
 \description{
 Portfolio_backtesting
-Realize the portfolio backtesting
+Realize the portfolio backtest.
 }
 \examples{
 Portfolio_backtesting()

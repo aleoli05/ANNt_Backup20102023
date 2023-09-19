@@ -1,13 +1,13 @@
 #' Portfolio_backtesting
-#' Realize the portfolio backtesting
-#'
+#' Realize the portfolio backtest.
 #' @export
-#' @param () No require parameters
-#'
+#' @param () no required parameters
 #' @examples
 #' Portfolio_backtesting()
 #'
+
 Portfolio_backtesting <- function() {
+
   options(warn=-1)
   load('~/Comparativo_RETORNOS.rda')
   load('~/Rf.rda')
@@ -286,6 +286,7 @@ Portfolio_backtesting <- function() {
   SUMBACKTEST_Df = mutate(as.data.frame(Portfolio),
                           as.data.frame(sumbacktest))
   write_xlsx(SUMBACKTEST_Df, "~/SUMMARY_BACKTEST.xlsx")
-  x="Backtesting realized!"
+
+  x="All backtest realized!"
   print(x)
 }
