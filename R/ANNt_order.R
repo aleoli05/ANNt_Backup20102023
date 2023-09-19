@@ -48,10 +48,11 @@ ANNt_order <- function(Initial_Date_Training, Final_Date_Training, Final_Date_Te
 
  Fator_Tempo = (12000/nrow(dados))*(Cont1/(nrow(dados)-5))*Stepmax/2500
  Unidade=' minute(s)'
- Tempo= round(Fator_Tempo*(ncol((dados))-1),2)
+ Tempo= round(Fator_Tempo*(ncol(dados)-1),2)
  if (Tempo>120){
    Unidade=' hour(s)'
    Tempo=round(Tempo/60,2)
+   Fator_Tempo=Fator_Tempo/60
  }
  dados2=data.frame(dados)
  cat(paste("

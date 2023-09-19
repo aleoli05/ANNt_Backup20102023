@@ -15,7 +15,6 @@ Portfolio_backtesting
 Realize the portfolio backtesting
 }
 \examples{
-# example code
 Portfolio_backtesting()
 
 }

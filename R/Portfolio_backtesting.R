@@ -5,15 +5,15 @@
 #' @param () No require parameters
 #'
 #' @examples
-#' # example code
 #' Portfolio_backtesting()
 #'
 Portfolio_backtesting <- function() {
+  options(warn=-1)
   load('~/Comparativo_RETORNOS.rda')
   load('~/Rf.rda')
   attach(as.data.frame(Comparativo_RETORNOS))
 
-  options(warn=-1)
+
   ## Medias dos retornos
   Media_MF_MKW = sum(MF_MKW)/length((MF_MKW))
   Media_SP500 <- sum(Comparativo_RETORNOS[,1])/length((Comparativo_RETORNOS[,1]))
@@ -275,11 +275,11 @@ Portfolio_backtesting <- function() {
 
   rownames(sumbacktest)= c("MF_Mkv","SP500", "ANNt_Eq", "Markowitz", "ANNt_Mkv",
                            "MaxSharpe", "MF_Sharpe", "RNAt_Sharpe")
-  colnames(sumbacktest) = c("Average Return (% a.d.)","Annualized Return (% a.a.)",
-                            "Cumulative Return (% a.p.)", "Annualized Volatility (% a.a.)",
-                            "VaR 95% (% a.d.)", "CVaR 95% (% a.d.)",
+  colnames(sumbacktest) = c("Average Return (% p.d.)","Annualized Return (% p.a.)",
+                            "Cumulative Return (% p.p.)", "Annualized Volatility (% p.a.)",
+                            "VaR 95% (% p.d.)", "CVaR 95% (% p.d.)",
                             "Sharpe Ratio (Dimensionless)", "Sortino Ratio",
-                            "CAPM Beta", "Jensen´s Alpha (% a.d.)", "Treynor (%a.d.)")
+                            "CAPM Beta", "Jensen´s Alpha (% p.d.)", "Treynor (% p.d.)")
   Summary_Backtest = sumbacktest
   View(Summary_Backtest)
   Portfolio = rownames(as.data.frame(sumbacktest))
