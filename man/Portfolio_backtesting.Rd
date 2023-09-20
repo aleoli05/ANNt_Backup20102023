@@ -8,7 +8,7 @@ Realize the portfolio backtest.}
 Portfolio_backtesting()
 }
 \arguments{
-\item{()}{no required parameters}
+\item{()}{No required parameters}
 }
 \description{
 Portfolio_backtesting

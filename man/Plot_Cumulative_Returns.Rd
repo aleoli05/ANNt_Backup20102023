@@ -16,5 +16,5 @@ Present Cumulative Returns Graph
 }
 \examples{
 Until_Date <- '2023-09-15'
-Plot_Cumulative_Returns('2023-09-15')
+Plot_Cumulative_Returns('')
 }

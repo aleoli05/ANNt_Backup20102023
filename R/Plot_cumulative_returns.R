@@ -3,7 +3,7 @@
 #'@param Until_Date if '' is the sys.Date()
 #'@examples
 #'Until_Date <- '2023-09-15'
-#'Plot_Cumulative_Returns('2023-09-15')
+#'Plot_Cumulative_Returns('')
 
 
 #'@export

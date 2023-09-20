@@ -274,7 +274,7 @@ Portfolio_backtesting <- function() {
   sumbacktest[8,11]= round(ITreynor(ANNt_SHARPE, Comparativo_RETORNOS[,1], 0.0311)*100,2)
 
   rownames(sumbacktest)= c("MF_Mkv","SP500", "ANNt_Eq", "Markowitz", "ANNt_Mkv",
-                           "MaxSharpe", "MF_Sharpe", "RNAt_Sharpe")
+                           "MaxSharpe", "MF_Sharpe", "ANNt_Sharpe")
   colnames(sumbacktest) = c("Average Return (% p.d.)","Annualized Return (% p.a.)",
                             "Cumulative Return (% p.p.)", "Annualized Volatility (% p.a.)",
                             "VaR 95% (% p.d.)", "CVaR 95% (% p.d.)",

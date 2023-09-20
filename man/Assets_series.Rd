@@ -26,13 +26,13 @@ Import the series with the length specified
 }
 \examples{
 # Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
-Tickers <-c('AAPL','GOOG','CCBG', 'XOM', 'TSLA')
+Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 RM <-c('^GSPC') #RM the S&P500
 Initial_Date <-c('2018-01-03')
 Final_Date <-c('2023-09-07')
 Periodicity <- c('daily')
 
 # Generates the Adjusted Daily Prices Series from Yahoo Finance
-Assets_series (Tickers=c('AAPL','GOOG','CCBG','XOM','TSLA'),'^GSPC', '2018-01-03', '','daily')
+Assets_series (Tickers=c('AAPL','XOM','TSLA','KO', 'F'),'^GSPC', '2018-01-03', '','daily')
 
 }

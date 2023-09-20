@@ -579,7 +579,9 @@ ___________________________________________________________________
     Weights_All[15,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
   }
   save(Initial_Date_Testing,file='~/Initial_Date_Testing.rda')
+  save(Classificacao_MFractal, file='~/Classificacao_MFractal.rda')
   save(Rf,file='~/Rf.rda')
+  save(weight_Sharpe,file='~/weight_Sharpe.rda')
   save(Weights_All,file='~/Weights_All.rda')
   save(N_Assets,file='~/N_Assets.rda')
   save(Final_Date_Testing,file='~/Final_Date_Testing.rda')
