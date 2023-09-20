@@ -6,6 +6,9 @@
 \usage{
 Gen_tickers(Generate_Tickers)
 }
+\arguments{
+\item{Tickers}{Name of the assets or "Current_SP500_Tickers" for all S&P 500 assets}
+}
 \description{
 Generate tickers
 }

@@ -1,6 +1,6 @@
 #' Generate tickers
 #' @export
-#' @ param Tickers Name of the assets or "Current_SP500_Tickers" for all S&P 500 assets
+#' @param Tickers Name of the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #' @examples
 #' # Specify the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #' # Apply the "load" command and use in "Asset_series" command

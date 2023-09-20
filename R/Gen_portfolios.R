@@ -262,6 +262,14 @@ ___________________________________________________________________
 
 
   all.returns <- TodosAtivosPredict
+  Contador=round(nrow(all.returns),-1)
+  if(nrow(all.returns)-Contador<0){
+    Contador=Contador-10
+  }
+  Remover= nrow(all.returns)-Contador
+  if(ncol(all.returns)>100){
+    all.returns <- all.returns[-(1:Remover),]
+  }
   ## set up portfolio with objetive and constraints
   n.assets <- length(colnames(all.returns))
   port.sec <- portfolio.spec(assets = colnames(all.returns))
@@ -485,7 +493,7 @@ ___________________________________________________________________
                                     as.data.frame(Comparativo_RETORNOS))
   View(Comparativo_RETORNOS)
   save(Comparativo_RETORNOS,file='~/Comparativo_RETORNOS.rda')
-  write_xlsx(Comparativos_RETORNOS_Df, "~/RetornosRNAxMF_DFA.xlsx")
+  write_xlsx(Comparativos_RETORNOS_Df, "~/Portfolio_Returns.xlsx")
 
   options(warn=-1)
   #
@@ -525,7 +533,10 @@ ___________________________________________________________________
 
   save(Comparativo,file='~/Comparativo.rda')
   save(Rf,file='~/Rf.rda')
-  write_xlsx(as.data.frame(Comparativo), "~/Comparativo_MF_DFA_Sharpe.xlsx")
+
+  Comparativo_Df = mutate(as.data.frame(Datas_Comparativo_RETORNOS),
+                                    as.data.frame(Comparativo))
+  write_xlsx(as.data.frame(Comparativo_Df), "~/Cumulative_Portfolio_Retuns.xlsx")
 
   #### Matrix of weights
   Weights_All <- matrix(ncol=60, nrow=22)
@@ -567,7 +578,13 @@ ___________________________________________________________________
     Weights_All[14,k+1]=data.frame(colnames(Weight_ANNt_Sharpe))[k,]
     Weights_All[15,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
   }
+  save(Initial_Date_Testing,file='~/Initial_Date_Testing.rda')
+  save(Rf,file='~/Rf.rda')
   save(Weights_All,file='~/Weights_All.rda')
+  save(N_Assets,file='~/N_Assets.rda')
+  save(Final_Date_Testing,file='~/Final_Date_Testing.rda')
+
+
   write_xlsx(as.data.frame(Weights_All), "~/Weights_All.xlsx")
 
   View(Weights_All)

@@ -1,11 +1,11 @@
 #' Portfolio_backtesting
 #' Realize the portfolio backtest.
-#' @export
-#' @param () no required parameters
+#'
+#' @param () No required parameters
 #' @examples
 #' Portfolio_backtesting()
 #'
-
+#' @export
 Portfolio_backtesting <- function() {
 
   options(warn=-1)

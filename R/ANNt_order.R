@@ -1,7 +1,7 @@
 #' classify assets by the probability of return exceeding a RM
 #' Use artificial neural networks and t-distribution, the number of input neurons is the number of import assets
 
-#' @export
+
 #' @param Inicial_Date Series start Date (Must be 7 perios greater than the analyzed seriess)
 # @param Date_Training Series finish training date
 #' @param Final_Date_Training Series end Date (If '' is the System Date)
@@ -23,6 +23,7 @@
 #of assets with leptokurtic distribution, which is more appropriate for financial
 #data.
 
+#' @export
 ANNt_order <- function(Initial_Date_Training, Final_Date_Training, Final_Date_Testing, Hidden, Stepmax) {
   ## Convers?o das variaveis
   # Excesso do retorno em relacao ao RM
@@ -815,6 +816,7 @@ ___________________________________________________________________
 
     ResProbPosPredict[1,k]= ProbPos
     ResProbTPosPredict[1,k]= ProbabilidadeTmedia
+
     Resultados_Assim_Curtose[1,k]=ProbabilidadeTmedia
     Resultados_Assim_Curtose[2,k]=mean(camadaSaidaPredict)
     Resultados_Assim_Curtose[3,k]=median(camadaSaidaPredict)
@@ -1015,6 +1017,11 @@ nome_asset= str_replace(Final_Date_Testing,"-","_")
 nome_asset= str_replace(nome_asset,"-","_")
 nome_Asset_order=paste("~/Assets_ANNt_Order_",nome_asset,".xlsx", sep="")
 nome_Summary_ANNt=paste("~/Summary_ANNt_",nome_asset,".xlsx", sep="")
+  save(Initial_Date_Training, file='~/Initial_Date_Training.rda')
+  save(Final_Date_Training, file='~/Final_Date_Training.rda')
+  save(Final_Date_Testing, file='~/Final_Date_Testing.rda')
+  save(Hidden, file='~/Hidden.rda')
+  save(Stepmax, file='~/Stepmax.rda')
   save(I_dataPredict,file='~/I_dataPredict.rda')
   save(F_dataPredict,file='~/F_dataPredict.rda')
   save(Summary_ANNt,file='~/Summary_ANNt.rda')

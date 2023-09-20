@@ -2,6 +2,9 @@
 
 export(ANNt_order)
 export(Assets_series)
+export(Backup_ANNt)
 export(Gen_portfolios)
 export(Gen_tickers)
 export(Install_required_packages)
+export(Plot_Cumulative_Returns)
+export(Portfolio_backtesting)
