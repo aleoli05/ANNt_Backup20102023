@@ -3,6 +3,7 @@
 export(ANNt_order)
 export(Assets_series)
 export(Backup_ANNt)
+export(Gen_efficient_frontier)
 export(Gen_portfolios)
 export(Gen_tickers)
 export(Install_required_packages)

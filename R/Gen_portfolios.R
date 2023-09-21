@@ -51,8 +51,12 @@ ___________________________________________________________________
   Rf=Rf/100
 
   scenario.set = data.frame(scenario.set)
+  if(class(Initial_Date_Testing)!=('numeric')){
   Datas1Predict = rownames(scenario.set)[
     (which(rownames(scenario.set)==Initial_Date_Testing)):(nrow(scenario.set)-1)]
+  }else{
+    Datas1Predict = rownames(scenario.set)[Initial_Date_Testing:(nrow(scenario.set)-1)]
+  }
 
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])
   colnames(PosCovidSP500)=colnames(scenario.set[1])
@@ -263,9 +267,9 @@ ___________________________________________________________________
 
   all.returns <- TodosAtivosPredict
   Contador=round(nrow(all.returns),-1)
-  if(nrow(all.returns)-Contador<0){
+  #if(nrow(all.returns)-Contador<0){
     Contador=Contador-10
-  }
+  #}
   Remover= nrow(all.returns)-Contador
   if(ncol(all.returns)>100){
     all.returns <- all.returns[-(1:Remover),]
@@ -581,6 +585,7 @@ ___________________________________________________________________
   save(Initial_Date_Testing,file='~/Initial_Date_Testing.rda')
   save(Classificacao_MFractal, file='~/Classificacao_MFractal.rda')
   save(Rf,file='~/Rf.rda')
+  save(pesos_todosPredict,file='~/pesos_todosPredict.rda')
   save(weight_Sharpe,file='~/weight_Sharpe.rda')
   save(Weights_All,file='~/Weights_All.rda')
   save(N_Assets,file='~/N_Assets.rda')
