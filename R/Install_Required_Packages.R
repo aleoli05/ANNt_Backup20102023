@@ -41,6 +41,7 @@ Install_required_packages <- function() {
     #install.packages("nse2r")
     install.packages('var')
     install.packages('cvar')
+    install.packages('IntroCompFinR', repos="http://R-Forge.R-project.org")
     #library("nse2r")
     library("quantmod")
     library("PerformanceAnalytics")
@@ -74,6 +75,7 @@ Install_required_packages <- function() {
     library("rvest")
     library("var")
     library("cvar")
+    library("IntroCompFinR")
 
   x="All installed and loaded"
   print(x)

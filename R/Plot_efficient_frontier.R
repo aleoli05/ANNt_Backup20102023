@@ -25,6 +25,8 @@ load('~/Classificacao_MFractal.rda')
 load('~/Comparativo_RETORNOS.rda')
 load('~/Initial_Analysis_Date.rda')
 load('~/Final_Analysis_Date.rda')
+load('~/GMV_Return.rda')
+load('~/GMV_sd.rda')
 
 Inicio_data = Initial_Analysis_Date
 Fim_data = Final_Analysis_Date
@@ -287,19 +289,27 @@ text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
      cex = 0.6,
      adj = -0.2
 )
+points(x=sd(GMV_sd),y=mean(GMV_Return), col="orange", pch=19)
+text(x=GMV_sd, y=mean(GMV_Return),
+     labels = "GMV",
+     col="orange",
+     font = 2,
+     cex = 0.6,
+     adj = -0.2
+)
 
 legend(x="topright",
        #legend=c(colnames(as.data.frame(Comparativo_RETORNOS)[1]), "MF_SHARPE", "ANNt_EQ" , "ANNt_MKW","ANNt_SHARPE",
        #        "MARKOWITZ","SHARPE"),
        legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
-                  "ANNt_MKW", "ANNt_SHARPE"),
+                  "ANNt_MKW", "ANNt_SHARPE", "GMV"),
        font=2,
        #text.col = c("black","red","blue","green","darkgreen", "brown", "darkblue"),
-       text.col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen"),
+       text.col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
        pch = 19,
        #col=c("black","red","blue","green","darkgreen", "brown", "darkblue"),
-       col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen"),
+       col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
        bty = "n",
        cex = 0.6
 )
@@ -493,29 +503,37 @@ text(sd(MARKOWITZ),mean(MARKOWITZ),
 )
 points(sd(ANNt_SHARPE),mean(ANNt_SHARPE), col="darkgreen", pch=19)
 text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
-     labels = "ANN-t_SHARPE",
+     labels = "ANNt_SHARPE",
      col="darkgreen",
      font=2,
      cex = 0.6,
      adj = -0.2
 )
 
+points(x=sd(GMV_sd),y=mean(GMV_Return), col="orange", pch=19)
+text(x=GMV_sd, y=mean(GMV_Return),
+     labels = "GMV",
+     col="orange",
+     font = 2,
+     cex = 0.6,
+     adj = -0.2
+)
+
 legend(x="topright",
        #legend=c(colnames(as.data.frame(Comparativo_RETORNOS)[1]), "MF_SHARPE", "ANNt_EQ" , "ANNt_MKW","ANNt_SHARPE",
-        #        "MARKOWITZ","SHARPE"),
+       #        "MARKOWITZ","SHARPE"),
        legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
-                  "ANNt_MKW", "ANNt_SHARPE"),
+                  "ANNt_MKW", "ANNt_SHARPE", "GMV"),
        font=2,
        #text.col = c("black","red","blue","green","darkgreen", "brown", "darkblue"),
-       text.col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen"),
+       text.col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
        pch = 19,
        #col=c("black","red","blue","green","darkgreen", "brown", "darkblue"),
-       col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen"),
+       col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
        bty = "n",
        cex = 0.6
 )
-
 
 
 

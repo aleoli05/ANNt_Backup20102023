@@ -99,6 +99,7 @@ ___________________________________________________________________
   library(CVXR)
   library(MFDFA)
   library(DEoptim)
+  library(IntroCompFinR)
   options(warn=-1)
 
   a<-0.9
@@ -180,7 +181,18 @@ ___________________________________________________________________
   colnames(Pesos_MFractal_Mkv2) <- Pesos_MFractal_Mkv1[,1]
   rownames(Pesos_MFractal_Mkv2)<-'Weight'
   #print(paste('Weights of the MF-MKW Portfolio:'))
-  #   print(Pesos_MFractal_Mkv2)
+    #   print(Pesos_MFractal_Mkv2)
+
+  ###############################################################################
+  # GMV - Global Minimum Variance
+  EPR=colMeans(TodosAtivosPredict)
+  COV=var(TodosAtivosPredict)
+  GMV=globalMin.portfolio(EPR,COV)
+  GMV_Return = GMV$er
+  GMV_sd = GMV$sd
+  weight_GMV = GMV$weights
+
+
   ################################################################################
   # Comparativo com a Carteira Multi Fractal _ MF
   # Carteira de Buffet - 7 ativos - 80%
@@ -189,6 +201,7 @@ ___________________________________________________________________
   #Datas1Predict = rownames(scenario.set)[
   # (which(rownames(scenario.set)=="2020-01-20")):(nrow(scenario.set)-1)]
 
+  ###################################################################################
   # Carteira de Markovitz de Minima Variância obtida a partir de todos ativos
   TodosAtivosPredict = as.matrix(rbind(scenario.set[Datas1Predict,-1]))
   pesos_todosPredict <- round(tseries::portfolio.optim(TodosAtivosPredict)$pw, 4)
@@ -222,6 +235,8 @@ ___________________________________________________________________
   rownames(Pesos_ANNt_Eq2)<-'Weight'
   print(paste('[3] Weights of the ANNt_EQ Portfolio:'))
   print(Pesos_ANNt_Eq2)
+
+  ##############################################################################
 
 
   # Carteira RNA NNet dist T com pesos de Markovitz  para Comparação
@@ -594,7 +609,8 @@ ___________________________________________________________________
   save(Weights_All,file='~/Weights_All.rda')
   save(N_Assets,file='~/N_Assets.rda')
   save(Final_Date_Testing,file='~/Final_Date_Testing.rda')
-
+  save(GMV_Return,file='~/GMV_Return.rda')
+  save(GMV_sd,file='~/GMV_sd.rda')
 
   write_xlsx(as.data.frame(Weights_All), "~/Weights_All.xlsx")
 
