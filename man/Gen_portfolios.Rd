@@ -11,7 +11,7 @@ Gen_portfolios(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf)
 
 \item{Initial_Date_Testing}{Initial Date of Test Series}
 
-\item{Final_Date_Testing}{Final Date Test Series}
+\item{Final_Date_Testing}{Final Date Test Series, if '' is the system date}
 
 \item{Rf}{Risk free rate}
 }
@@ -21,7 +21,7 @@ Gen_portfolios
 \examples{
 N_Assets <- 3
 Initial_Date_Testing <- c('2023-01-03')
-Final_Date_Testing <- c('2023-09-07')
+Final_Date_Testing <- c('')
 Rf <- 0
 
 # Generate assets portfolio (maximum N assets specified)

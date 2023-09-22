@@ -11,7 +11,7 @@
 #' @examples
 #' Initial_Date_Training <-c('2018-01-11')
 #' Final_Date_Training <- c('2022-12-29')
-#' Final_Date_Testing <-c('2023-09-07')
+#' Final_Date_Testing <-c('')
 #' Hidden <- 5
 #' Stepmax <- 2500
 #' ANNt_order ('2018-01-11','2022-12-29','', 5, 2500)
@@ -1019,6 +1019,8 @@ nome_Asset_order=paste("~/Assets_ANNt_Order_",nome_asset,".xlsx", sep="")
 nome_Summary_ANNt=paste("~/Summary_ANNt_",nome_asset,".xlsx", sep="")
   save(Initial_Date_Training, file='~/Initial_Date_Training.rda')
   save(Final_Date_Training, file='~/Final_Date_Training.rda')
+  Initial_Date_Testing=rownames(as.data.frame(entradasPredict)[1,])
+  save(Initial_Date_Testing, file='~/Initial_Date_Testing.rda')
   save(Final_Date_Testing, file='~/Final_Date_Testing.rda')
   save(Hidden, file='~/Hidden.rda')
   save(Stepmax, file='~/Stepmax.rda')

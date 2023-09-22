@@ -12,6 +12,9 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
 
   library(PerformanceAnalytics)
   library(stringr)
+  library(tibble)
+  library(timetk)
+  library(writexl)
   options(warn=-1)
   ### Long Term Analysis
   load('~/scenario.set.rda')
@@ -24,6 +27,7 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
   load('~/Classificacao_MFractal.rda')
   load('~/weight_SHARPE.rda')
   load('~/pesos_todosPredict.rda')
+  load('~/Comparativo_RETORNOS.rda')
 
   if(Initial_Analysis_Date==('')){
     Initial_Analysis_Date=Initial_Date_Testing
@@ -55,15 +59,17 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
   nomes <- c("Media","Desvio", "Betas", "Prob>SP500", "Probabilidade do Desvio")
   rownames(Base_Palomar)<-nomes
 
-  MF_DFA = Classificacao_MFractal[1:N_Assets]
+  MF_DFA = as.data.frame(Classificacao_MFractal)[1:N_Assets]
   #Buffet = c("AAPL", "BAC", "CVX", "KO", "AXP", "KHC", "OXY", "MCO")
-  ANNt = T8[,N_Assets]
+  ANNt = T8[1:N_Assets]
   max_frame = as.data.frame(weight_Sharpe)
   assets_max_frame <- str_replace(rownames(max_frame),"w.","")
   rownames(max_frame)=assets_max_frame
   Sharpe_ativos = t(dplyr::filter(max_frame,max_frame>0))
   Base_Palomar_frame = as.data.frame(Base_Palomar)
 
+  sd_sharpe = sd(as.data.frame(Comparativo_RETORNOS)$SHARPE)
+  mean_sharpe = mean(as.data.frame(Comparativo_RETORNOS)$SHARPE)
   RNAt = Base_Palomar_frame%>%dplyr::select(which((colnames(Base_Palomar_frame) %in% colnames(ANNt))))
   MF = Base_Palomar_frame%>%dplyr::select(which((colnames(Base_Palomar_frame) %in% colnames(MF_DFA))))
   #BF = Base_Palomar_frame%>%dplyr::select(which((colnames(Base_Palomar_frame) %in% Buffet)))
@@ -247,10 +253,20 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
   #weight_test <- round(weight_test,4)
   #weight_Sharpe= weight_test[which(weight_test !=0)]
   #weight_Sharpe
-  save(fronteiraEficiente,file='~/fronteiraEficiente.dra')
-  save(Base_Palomar,file='~/Base_Palomar.dra')
+  save(fronteiraEficiente,file='~/fronteiraEficiente.rda')
+  save(Initial_Analysis_Date,file='~/Initial_Analysis_Date.rda')
+  save(Final_Analysis_Date,file='~/Final_Analysis_Date.rda')
+  save(max_frame,file='~/max_frame.rda')
+  save(Base_Palomar,file='~/Base_Palomar.rda')
+  save(Mkw,file='~/Mkw.rda')
+  save(RNAt,file='~/RNAt.rda')
+  save(MF,file='~/MF.rda')
+  save(Sharpe,file='~/Sharpe.rda')
+  save(riscosAlvo,file='~/riscosAlvo.rda')
+  save(retornoAlvos,file='~/retornoAlvos.rda')
+
   write_xlsx(Base_Palomar_frame,'Base_Palomar.xts')
 
     X="Efficient frontier generated!"
-  PRINT(X)
+    print(X)
 }

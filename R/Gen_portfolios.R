@@ -2,19 +2,20 @@
 #' @export
 #' @param N_Assets limit of asset numbers in the portfolio
 #' @param Initial_Date_Testing Initial Date of Test Series
-#' @param Final_Date_Testing Final Date Test Series
+#' @param Final_Date_Testing Final Date Test Series, if '' is the system date
 #' @param Rf Risk free rate
 #'
 #' @examples
 #' N_Assets <- 3
 #' Initial_Date_Testing <- c('2023-01-03')
-#' Final_Date_Testing <- c('2023-09-07')
+#' Final_Date_Testing <- c('')
 #' Rf <- 0
 #'
 #' # Generate assets portfolio (maximum N assets specified)
 #' Gen_portfolios(3,'2023-01-03','',0)
 #'
 Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf){
+
 
   # Duração do processamento 1720/length(dados)=1.2 min)
   load("~/scenario.set.rda") # Carrega objeto scenario.set
@@ -52,8 +53,8 @@ ___________________________________________________________________
 
   scenario.set = data.frame(scenario.set)
   if(class(Initial_Date_Testing)!=('numeric')){
-  Datas1Predict = rownames(scenario.set)[
-    (which(rownames(scenario.set)==Initial_Date_Testing)):(nrow(scenario.set)-1)]
+    Datas1Predict = rownames(scenario.set)[
+      (which(rownames(scenario.set)==Initial_Date_Testing)):(nrow(scenario.set)-1)]
   }else{
     Datas1Predict = rownames(scenario.set)[Initial_Date_Testing:(nrow(scenario.set)-1)]
   }
@@ -123,6 +124,9 @@ ___________________________________________________________________
     Fim_data = Final_Date_Testing
     I_data = which(rownames(dat_MF)==Inicio_data)
     F_data = which(rownames(dat_MF)==Fim_data)
+    if(class(Initial_Date_Testing)==('numeric')){
+      I_data=Initial_Date_Testing
+    }
     entradas = as.matrix(dat_MF[I_data:F_data,])
     saidas = as.matrix(dat_MF[(I_data+1):(F_data+1),1])
 
@@ -268,7 +272,7 @@ ___________________________________________________________________
   all.returns <- TodosAtivosPredict
   Contador=round(nrow(all.returns),-1)
   #if(nrow(all.returns)-Contador<0){
-    Contador=Contador-10
+  Contador=Contador-10
   #}
   Remover= nrow(all.returns)-Contador
   if(ncol(all.returns)>100){
@@ -539,7 +543,7 @@ ___________________________________________________________________
   save(Rf,file='~/Rf.rda')
 
   Comparativo_Df = mutate(as.data.frame(Datas_Comparativo_RETORNOS),
-                                    as.data.frame(Comparativo))
+                          as.data.frame(Comparativo))
   write_xlsx(as.data.frame(Comparativo_Df), "~/Cumulative_Portfolio_Retuns.xlsx")
 
   #### Matrix of weights
@@ -596,6 +600,5 @@ ___________________________________________________________________
 
   View(Weights_All)
   View(Comparativo_RETORNOS)
-
 
 }

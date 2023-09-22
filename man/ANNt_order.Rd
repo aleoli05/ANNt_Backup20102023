@@ -29,7 +29,7 @@ Use artificial neural networks and t-distribution, the number of input neurons i
 \examples{
 Initial_Date_Training <-c('2018-01-11')
 Final_Date_Training <- c('2022-12-29')
-Final_Date_Testing <-c('2023-09-07')
+Final_Date_Testing <-c('')
 Hidden <- 5
 Stepmax <- 2500
 ANNt_order ('2018-01-11','2022-12-29','', 5, 2500)
