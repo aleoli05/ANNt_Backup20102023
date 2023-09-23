@@ -21,5 +21,15 @@ Assets_series (Tickers=c('AAPL','GOOG','CCBG','XOM','TSLA'),'^GSPC', '2018-01-03
          Portfolios_backtesting()
 # 8) Plot Cumulative Portfolio Returns, example: 
          Plot_Cumulative_Returns('')
-# 9) Save copy of alls processed data, example: 
+# 9) Generate Efficient Frontier of Markowitz:
+         Gen_efficient_frontier('','')
+# 10) Plot the Efficient Frontier graphic:
+         Plot_efficient_frontier()
+# 11) Plot the New Efficient Frontier:
+         Plot_New_Efficient_Frontier()
+# 12) Plot the Cumulative Sum of Returns (CUSUM Graaphic):
+         Plot_CUSUM(1,5)
+# 13) Save copy of alls processed data, example: 
          Backup_ANNt()
+# Alternatively: SINGLE COMMAND FOR THE ENTIRE PACKAGE AFTER INSTALLING THE REQUIRED PACKAGES#
+ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily')
