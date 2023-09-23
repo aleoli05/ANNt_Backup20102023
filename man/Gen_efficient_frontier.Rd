@@ -18,6 +18,6 @@ Generate efficient frontier of Markowitz
 }
 \examples{
 Initial_Analysis_Date <- c('2023-01-03')
-Final_Date_Analysis <- c('2023-01-03')
+Final_Analysis_Date <- c('2023-01-03')
 Gen_efficient_frontier('','')
 }

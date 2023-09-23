@@ -339,7 +339,11 @@ if (x==1) {
 
   chart.Bar(scenario.set[,1])
   charts.PerformanceSummary(scenario.set[,1])
-  Chart_RM=(charts.PerformanceSummary(scenario.set[,1]))
+
   png(file="~/Chart_RM.png", width=1920, height=1200, res=296)
+    Chart_RM=(charts.PerformanceSummary(scenario.set[,1]))
+    dev.off()
+
+  Chart_RM=(charts.PerformanceSummary(scenario.set[,1]))
   #########################################
 }

@@ -22,6 +22,7 @@ Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf
   load("~/T8.rda") # Carrega objeto scenario.set
   load("~/I_dataPredict.rda") # Carrega objeto scenario.set
   load("~/F_dataPredict.rda") # Carrega objeto scenario.set
+  load("~/Initial_Date_Testing.rda")
 
   dados<-scenario.set
   nAtivos = ncol(dados)
@@ -56,7 +57,7 @@ ___________________________________________________________________
     Datas1Predict = rownames(scenario.set)[
       (which(rownames(scenario.set)==Initial_Date_Testing)):(nrow(scenario.set)-1)]
   }else{
-    Datas1Predict = rownames(scenario.set)[Initial_Date_Testing:(nrow(scenario.set)-1)]
+    Datas1Predict = rownames(scenario.set)[(Initial_Date_Testing+6):(nrow(scenario.set)-1)]
   }
 
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])

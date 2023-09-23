@@ -5,7 +5,7 @@
 #' @param Final_Analysis_date Final Date of Analysis. If '' is the same of ANNt testing
 #' @examples
 #' Initial_Analysis_Date <- c('2023-01-03')
-#' Final_Date_Analysis <- c('2023-01-03')
+#' Final_Analysis_Date <- c('2023-01-03')
 #' Gen_efficient_frontier('','')
 #' @export
 Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
@@ -29,26 +29,38 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
   load('~/pesos_todosPredict.rda')
   load('~/Comparativo_RETORNOS.rda')
 
-  if(Initial_Analysis_Date==('')){
-    Initial_Analysis_Date=Initial_Date_Testing
-  }
+  scenario.set = data.frame(scenario.set)
   if(Final_Analysis_Date==('')){
     Final_Analysis_Date=rownames(as.data.frame(scenario.set)[nrow(scenario.set),])
   }
-  Datas1Predict = rownames(scenario.set)[
-    (which(rownames(scenario.set)==Initial_Analysis_Date)):
-      (which(rownames(scenario.set)==Final_Analysis_Date))]
+  if(Initial_Analysis_Date==('')){
+    Initial_Analysis_Date=Initial_Date_Testing
+  }
+
+  if(class(Initial_Analysis_Date)!=('numeric')){
+    Datas1Predict = rownames(scenario.set)[
+      (which(rownames(scenario.set)==Initial_Analysis_Date)):
+        (which(rownames(scenario.set)==Final_Analysis_Date))]
+  }else{
+    Datas1Predict = rownames(scenario.set)[(Initial_Analysis_Date+6):(
+      which(rownames(scenario.set)==Final_Analysis_Date))]
+  }
+
+
   TodosAtivosPredict = as.matrix(rbind(scenario.set[Datas1Predict,-1]))
 
 
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])
+  P1 = ts(PosCovidSP500)
 
-  PosCovid_set.returns = as.matrix(scenario.set[Datas1Predict,])
-  Betas <- CAPM.beta(Ra=PosCovid_set.returns[,1:ncol(PosCovid_set.returns)], Rb=PosCovidSP500)
+  PosCovid_set.returns = as.data.frame(scenario.set[Datas1Predict,])
+  P2 = ts(PosCovid_set.returns)
+
+  Betas <- CAPM.beta(Ra=P2[,1:ncol(P2)], Rb=P1)
+
 
   Medias_set.returns <- as.matrix(t(apply(PosCovid_set.returns[,-1], 2, mean)))
   Betas_set <- Betas[,-1]
-
 
   Desvios_set.returns <- as.matrix(t(apply(PosCovid_set.returns[,-1], 2, sd)))
 
@@ -253,6 +265,8 @@ Gen_efficient_frontier<-function(Initial_Analysis_Date,Final_Analysis_Date){
   #weight_test <- round(weight_test,4)
   #weight_Sharpe= weight_test[which(weight_test !=0)]
   #weight_Sharpe
+  Initial_Analysis_Date =Datas1Predict[1]
+
   save(fronteiraEficiente,file='~/fronteiraEficiente.rda')
   save(Initial_Analysis_Date,file='~/Initial_Analysis_Date.rda')
   save(Final_Analysis_Date,file='~/Final_Analysis_Date.rda')
