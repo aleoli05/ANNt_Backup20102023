@@ -39,7 +39,7 @@ Install_required_packages <- function() {
     install.packages("MFDFA")
     install.packages("DEoptim")
     #install.packages("nse2r")
-    install.packages('var')
+#    install.packages('var')
     install.packages('cvar')
     install.packages('IntroCompFinR', repos="http://R-Forge.R-project.org")
     #library("nse2r")
@@ -73,7 +73,7 @@ Install_required_packages <- function() {
     library("MFDFA")
     library("DEoptim")
     library("rvest")
-    library("var")
+#    library("var")
     library("cvar")
     library("IntroCompFinR")
 

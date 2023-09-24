@@ -27,6 +27,7 @@ Backup_ANNt <- function(){
   load('~/RM.rda')
   load('~/Initial_Date.rda')
   load('~/Final_Date.rda')
+  #load('~/x0.rda')
   load('~/Initial_Date_Training.rda')
   load('~/Final_Date_Training.rda')
   load('~/Initial_Date_Testing.rda')
@@ -35,7 +36,6 @@ Backup_ANNt <- function(){
   load('~/Stepmax.rda')
   load('~/Rf.rda')
   load('~/Until_Date.rda')
-
   Values=c(tickers)
   for(k in (2:length((Values)))){
   Readme_ANNt[1,k]=Values[k]

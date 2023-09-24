@@ -307,7 +307,7 @@ if (x==1) {
   scenario.set <- scenario.set[apply(scenario.set,1,
                                      function(x) all(!0)),]
   #View(scenario.set)
-
+  Final_Date = rownames(as.data.frame(scenario.set)[nrow(scenario.set),])
   assets <- ncol(scenario.set)
   scenarios <- nrow(scenario.set)
   saveRDS(scenario.set,file='scenario.set')

@@ -174,13 +174,13 @@ points(sd(MF_MKW),mean(MF_MKW),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(MF_MKW), y=mean(MF_MKW),
-     labels = "MF_MKW",
-     col="red",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(MF_MKW), y=mean(MF_MKW),
+#     labels = "MF_MKW",
+#     col="red",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(MF_SHARPE),mean(MF_SHARPE),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -188,13 +188,13 @@ points(sd(MF_SHARPE),mean(MF_SHARPE),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(MF_SHARPE), y=mean(MF_SHARPE),
-     labels = "MF_SHARPE",
-     col="purple",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(MF_SHARPE), y=mean(MF_SHARPE),
+#     labels = "MF_SHARPE",
+#     col="purple",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(ANNt_EQ),mean(ANNt_EQ),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -202,13 +202,13 @@ points(sd(ANNt_EQ),mean(ANNt_EQ),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(ANNt_EQ), y=mean(ANNt_EQ),
-     labels = "ANNt_EQ",
-     col="blue",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(ANNt_EQ), y=mean(ANNt_EQ),
+#     labels = "ANNt_EQ",
+#     col="blue",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(ANNt_MKW),mean(ANNt_MKW),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -216,13 +216,13 @@ points(sd(ANNt_MKW),mean(ANNt_MKW),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(ANNt_MKW), y=mean(ANNt_MKW),
-     labels = "ANNt_MKW",
-     col="green",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(ANNt_MKW), y=mean(ANNt_MKW),
+#     labels = "ANNt_MKW",
+#     col="green",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(RNAt[2,],RNAt[1,],#,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
        col="darkgreen",
@@ -250,13 +250,13 @@ text(x=0, y=(1+Rf)^(1/252)-1,
      adj = -0.2
 )
 points(sd_sharpe,mean_sharpe, col="darkgray", pch = 19)
-text(sd_sharpe,mean_sharpe,
-     labels = "SHARPE",
-     col="darkgray",
-     cex = 0.6,
-     font=2,
-     adj = -0.2
-)
+#text(sd_sharpe,mean_sharpe,
+#     labels = "SHARPE",
+#     col="darkgray",
+#     cex = 0.6,
+#     font=2,
+#     adj = -0.2
+#)
 colnames(as.data.frame(Comparativo_RETORNOS)[,1])
 points(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]), col="black", pch = 19)
 text(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]),
@@ -274,13 +274,13 @@ text(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]),
 #     adj = -0.2
 #)
 points(sd(MARKOWITZ),mean(MARKOWITZ), col="brown", pch=19)
-text(sd(MARKOWITZ),mean(MARKOWITZ),
-     labels = "MARKOWITZ",
-     col="brown",
-     cex = 0.6,
-     font =2,
-     adj = -0.2
-)
+#text(sd(MARKOWITZ),mean(MARKOWITZ),
+#     labels = "MARKOWITZ",
+#     col="brown",
+#     cex = 0.6,
+#     font =2,
+#     adj = -0.2
+#)
 points(sd(ANNt_SHARPE),mean(ANNt_SHARPE), col="darkgreen", pch=19)
 text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
      labels = "ANN-t_SHARPE",
@@ -289,13 +289,13 @@ text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
      cex = 0.6,
      adj = -0.2
 )
-points(x=sd(GMV_sd),y=mean(GMV_Return), col="orange", pch=19)
-text(x=GMV_sd, y=mean(GMV_Return),
+points(x=GMV_sd,y=GMV_Return, col="orange", pch=19)
+text(x=GMV_sd, y=GMV_Return,
      labels = "GMV",
      col="orange",
      font = 2,
      cex = 0.6,
-     adj = -0.2
+     adj = 1.2
 )
 
 legend(x="topright",
@@ -304,9 +304,9 @@ legend(x="topright",
        legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
                   "ANNt_MKW", "ANNt_SHARPE", "GMV"),
-       font=2,
        #text.col = c("black","red","blue","green","darkgreen", "brown", "darkblue"),
        text.col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
+       font=2,
        pch = 19,
        #col=c("black","red","blue","green","darkgreen", "brown", "darkblue"),
        col=c("black", "brown", "darkgray", "red", "purple","blue",  "green", "darkgreen","orange"),
@@ -394,13 +394,13 @@ points(sd(MF_MKW),mean(MF_MKW),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(MF_MKW), y=mean(MF_MKW),
-     labels = "MF_MKW",
-     col="red",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(MF_MKW), y=mean(MF_MKW),
+#     labels = "MF_MKW",
+#     col="red",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(MF_SHARPE),mean(MF_SHARPE),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -408,13 +408,13 @@ points(sd(MF_SHARPE),mean(MF_SHARPE),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(MF_SHARPE), y=mean(MF_SHARPE),
-     labels = "MF_SHARPE",
-     col="purple",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(MF_SHARPE), y=mean(MF_SHARPE),
+#     labels = "MF_SHARPE",
+#     col="purple",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(ANNt_EQ),mean(ANNt_EQ),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -422,13 +422,13 @@ points(sd(ANNt_EQ),mean(ANNt_EQ),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(ANNt_EQ), y=mean(ANNt_EQ),
-     labels = "ANNt_EQ",
-     col="blue",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(ANNt_EQ), y=mean(ANNt_EQ),
+#     labels = "ANNt_EQ",
+#     col="blue",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(sd(ANNt_MKW),mean(ANNt_MKW),
        #,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
@@ -436,13 +436,13 @@ points(sd(ANNt_MKW),mean(ANNt_MKW),
        #xlim = c(0.01, 0.07),
        pch=19
 )
-text(x=sd(ANNt_MKW), y=mean(ANNt_MKW),
-     labels = "ANNt_MKW",
-     col="green",
-     font = 2,
-     cex = 0.6,
-     adj = -0.2
-)
+#text(x=sd(ANNt_MKW), y=mean(ANNt_MKW),
+#     labels = "ANNt_MKW",
+#     col="green",
+#     font = 2,
+#     cex = 0.6,
+#     adj = -0.2
+#)
 points(RNAt[2,],RNAt[1,],#,main="Fronteira Eficiente por Desvio",
        #ylab="Retorno", xlab="Desvio-Padr?o",
        col="darkgreen",
@@ -470,13 +470,13 @@ text(x=0, y=(1+Rf)^(1/252)-1,
      adj = -0.2
 )
 points(sd_sharpe,mean_sharpe, col="darkgray", pch = 19)
-text(sd_sharpe,mean_sharpe,
-     labels = "SHARPE",
-     col="darkgray",
-     cex = 0.6,
-     font=2,
-     adj = -0.2
-)
+#text(sd_sharpe,mean_sharpe,
+#     labels = "SHARPE",
+#     col="darkgray",
+#     cex = 0.6,
+#     font=2,
+#     adj = -0.2
+#)
 colnames(as.data.frame(Comparativo_RETORNOS)[,1])
 points(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]), col="black", pch = 19)
 text(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]),
@@ -494,13 +494,13 @@ text(sd(Comparativo_RETORNOS[,1]),mean(Comparativo_RETORNOS[,1]),
 #     adj = -0.2
 #)
 points(sd(MARKOWITZ),mean(MARKOWITZ), col="brown", pch=19)
-text(sd(MARKOWITZ),mean(MARKOWITZ),
-     labels = "MARKOWITZ",
-     col="brown",
-     cex = 0.6,
-     font =2,
-     adj = -0.2
-)
+#text(sd(MARKOWITZ),mean(MARKOWITZ),
+#     labels = "MARKOWITZ",
+#     col="brown",
+#     cex = 0.6,
+#     font =2,
+#     adj = -0.2
+#)
 points(sd(ANNt_SHARPE),mean(ANNt_SHARPE), col="darkgreen", pch=19)
 text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
      labels = "ANNt_SHARPE",
@@ -510,13 +510,13 @@ text(sd(ANNt_SHARPE),mean(ANNt_SHARPE),
      adj = -0.2
 )
 
-points(x=sd(GMV_sd),y=mean(GMV_Return), col="orange", pch=19)
-text(x=GMV_sd, y=mean(GMV_Return),
+points(x=GMV_sd,y=GMV_Return, col="orange", pch=19)
+text(x=GMV_sd, y=GMV_Return,
      labels = "GMV",
      col="orange",
      font = 2,
      cex = 0.6,
-     adj = -0.2
+     adj = 1.2
 )
 
 legend(x="topright",

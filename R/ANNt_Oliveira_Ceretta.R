@@ -1,0 +1,64 @@
+#'ANNt_Oliveira_Ceretta
+#'Command that realize all operations of the package and save all in a specific past into user past
+#'@param Tickers Name of the assets or "Current_SP500_Tickers" for all S&P 500 assets
+#'@param RM Proxy of the market
+#'@param Rf Risk free rate
+#'@param Initial_Date Series start Date, format ('Year-Month-Day'). Assets with values not observed in the series are excluded
+#'@param Initial_Date_Training
+#'@param Final_Date
+#'@param Periodicity should be one of “daily”, “weekly”, “monthly”, “hourly”, “1minutes”, “2minutes”, “5minutes”, “15minutes”, “30minutes”, “60minutes”, “90minutes”. (Intraday maximum 7 days)
+#'@param Hidden Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons
+#'@param Stepmax Number of replications per asset to train the ANN. For a good performance, use 7500
+#'@param N_Assets Limit of asset numbers in the portfolio
+#'@examples
+#'Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
+#'RM <-c('^GSPC') #RM the S&P500
+#'Rf <- 0
+#'Initial_Date <-c('2018-01-03')
+#'Final_Date_Training <- c('2022-12-29')
+#'Final_Date <-c('')
+#'Periodicity <- c('daily')
+#'Hidden <- 5
+#'Stepmax <- 2500
+#'N_Assets <- 3
+#'ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,2500,3)
+#'@export
+ANNt_Oliveira_Ceretta <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, N_Assets){
+#Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
+#RM <-c('^GSPC') #RM the S&P500
+Initial_Date <-Initial_Date
+x0 = Final_Date
+save(x0, file='~/x0.rda')
+Final_Date <-Final_Date
+Periodicity <- Periodicity
+Initial_Date_Training <-''
+# Indicate that the command ANNt_Oliveira_Ceretta is used
+x1 = Final_Date_Training
+save(x1, file='~/x1.rda')
+Final_Date_Testing <-c('')
+x2 = Hidden
+save(x2, file='~/x2.rda')
+x3 = Stepmax
+save(x3, file='~/x3.rda')
+x4 = N_Assets
+save(x4, file='~/x4.rda')
+Initial_Date_Testing <- c('')
+Final_Date_Testing <- c('')
+Rf <- Rf
+Initial_Analysis_Date <- c('')
+Final_Analysis_Date <- c('')
+
+Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily')
+Final_Date_Training <- Final_Date_Training
+ANNt_order ('', '', '', 'hidden', 'stepmax')
+Gen_portfolios('n_Assets',Initial_Date_Testing,'',0)
+Portfolio_backtesting()
+Plot_Cumulative_Returns('')
+Gen_efficient_frontier('','')
+Plot_efficient_frontier()
+Plot_New_efficient_frontier()
+Plot_CUSUM('','')
+Sys.sleep((150))
+save(Final_Date, file='~/Final_Date.rda')
+Backup_ANNt()
+}

@@ -30,16 +30,33 @@ ANNt_order <- function(Initial_Date_Training, Final_Date_Training, Final_Date_Te
 
 
   load("~/scenario.set.rda") # Carrega objeto scenario.set
+  load("~/Initial_Date.rda") # Carrega objeto scenario.set
   #load("~/tickers.rda") # Carrega objeto scenario.set
 
   tickers=colnames(scenario.set)
  dados<-scenario.set
 
+ if(Final_Date_Training==''){
+    load('~/x1.rda')
+   Final_Date_Training=x1
+ }
+ if(Initial_Date_Training==('')){
+   Initial_Date_Training=rownames(as.data.frame(scenario.set)[6,])
+ }
 
  if(Final_Date_Testing==('')){
    Final_Date_Testing=Sys.Date()
  }
-
+ # y1 is the number of hidden, case the ANNt_Oliveira_Ceretta went used
+ if(Hidden=='hidden'){
+  load('~/x2.rda')
+   Hidden=x2
+ }
+ # y2 is the number of Stepmax, case the ANNt_Oliveira_Ceretta went use
+ if(Stepmax=='stepmax'){
+   load('~/x3.rda')
+   Stepmax=x3
+ }
  if (Hidden==''){
    Cont1=nrow(dados)-5
  } else{
@@ -248,6 +265,10 @@ ___________________________________________________________________
     #pdf(file=arquivo, height = 8, width = 9)
     #pdf(file=arquivo)
     if (ativo==ncol(dados)){
+      dev.off()
+      #op <- par(new = TRUE)
+      #windowsFonts(A=windowsFont("Times New Roman"))
+      #par(family="A")
      plot(nnplot)
     }
     #dev.off()
@@ -1021,7 +1042,7 @@ nome_Summary_ANNt=paste("~/Summary_ANNt_",nome_asset,".xlsx", sep="")
   save(Final_Date_Training, file='~/Final_Date_Training.rda')
 
   D = which(rownames(scenario.set)==Final_Date_Training)
-  Initial_Date_Testing = rownames(scenario.set[D+1,])
+  Initial_Date_Testing = rownames(as.data.frame(scenario.set)[D+1,])
   #Initial_Date_Testing=rownames(as.data.frame(entradasPredict)[1,])
   save(Initial_Date_Testing, file='~/Initial_Date_Testing.rda')
   save(Final_Date_Testing, file='~/Final_Date_Testing.rda')
