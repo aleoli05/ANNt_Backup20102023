@@ -33,6 +33,7 @@ load('~/Comparativo_RETORNOS.rda')
 load('~/Comparativo.rda')
 load('~/Initial_Analysis_Date.rda')
 load('~/Final_Analysis_Date.rda')
+load('~/Final_Date_Testing.rda')
 
 dev.off()
 
@@ -141,7 +142,7 @@ text(x=max(Tabela_CUSUM[,1]-20), y=max(Tabela_CUSUM[,9]),
 )
 title("Graphic Cumulative Sum")
 title(main = paste(
-  xlab= Inicio_data,"/", xlab= Fim_data),
+  xlab= Inicio_data,"/", xlab= Final_Date_testing),
   #xlab= Inicio_data,"/", xlab= "2023-03-17"),
   line = 0.5,
   cex = 0.5,
@@ -196,6 +197,7 @@ lines(Tabela_CUSUM[,1],Tabela_CUSUM[,4],
       ylab="Cumulative Sum", xlab="Observation",
       type = "b",
       col="darkgreen",
+      pch=19,
       #cex.lab = 0.8,
       #cex.axis = 0.8,
       cex=0.6
@@ -204,6 +206,7 @@ lines(Tabela_CUSUM[,1],Tabela_CUSUM[,6],
       ylab="Return", xlab="Observation",
       type = "b",
       col="gray",
+      pch=19,
       #cex.lab = 0.8,
       #cex.axis = 0.8,
       cex=0.6
@@ -227,7 +230,7 @@ text(x=max(Tabela_CUSUM[,1]-20), y=max(Tabela_CUSUM[,9]),
 )
 title("Graphic Cumulative Sum")
 title(main = paste(
-  xlab= Inicio_data,"/", xlab= Fim_data),
+  xlab= Inicio_data,"/", xlab= Final_Date_Testing),
   #xlab= Inicio_data,"/", xlab= "2023-03-17"),
   line = 0.5,
   cex = 0.5,
@@ -238,7 +241,7 @@ legend("bottomright", cex= 0.6, legend = c(    "CuSum+",
                                                "CuSum-",
                                                "ULC",
                                                "LLC"),
-       pch = 1,
+       pch = 19,
        #lwd = 3,
        #bty = "o",
        bty = "n",
