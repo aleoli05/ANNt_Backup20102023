@@ -142,7 +142,7 @@ text(x=max(Tabela_CUSUM[,1]-20), y=max(Tabela_CUSUM[,9]),
 )
 title("Graphic Cumulative Sum")
 title(main = paste(
-  xlab= Inicio_data,"/", xlab= Final_Date_testing),
+  xlab= Inicio_data,"/", xlab= Final_Date_Testing),
   #xlab= Inicio_data,"/", xlab= "2023-03-17"),
   line = 0.5,
   cex = 0.5,
