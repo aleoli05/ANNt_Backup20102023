@@ -164,10 +164,6 @@ dev.off()
 
 ################################################################################
 
-op <- par(new = TRUE)
-windowsFonts(A=windowsFont("Times New Roman"))
-par(family="A")
-
 cores=c("darkgreen","gray", "darkred","red")
 Eixo = c(1:nrow(Comparativo))
 Eixo_X = rownames(as.data.frame(Comparativo_RETORNOS))
@@ -186,7 +182,9 @@ TestComparativo = cbind(as.data.frame(Comparativo_RETORNOS), Eixo)
 Retornos=TestComparativo[1]
 Periodos=TestComparativo$Eixo
 
-
+op <- par(new = TRUE)
+windowsFonts(A=windowsFont("Times New Roman"))
+par(family="A")
 plot(Tabela_CUSUM[,1],Tabela_CUSUM[,9],
      ylab="Cumulative Sum", xlab="Observation",
      type = "n",
