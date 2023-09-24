@@ -1,7 +1,10 @@
 # ANNt
 Artificial Neural Network with 't' Distribution Portfolio 
 
-Follow the steps to test:
+# SINGLE COMMAND FOR THE ENTIRE PACKAGE AFTER INSTALLING THE REQUIRED PACKAGES#
+ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily', 5, 2500, 3)
+
+Follow the steps for the test step by step:
 
 # 1) Install and enable remotes package: 
        # install.packages('remotes')
@@ -31,5 +34,4 @@ Assets_series (Tickers=c('AAPL','GOOG','CCBG','XOM','TSLA'),'^GSPC', '2018-01-03
          Plot_CUSUM(1,5)
 # 13) Save copy of alls processed data, example: 
          Backup_ANNt()
-# Alternatively: SINGLE COMMAND FOR THE ENTIRE PACKAGE AFTER INSTALLING THE REQUIRED PACKAGES#
-ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily')
+
