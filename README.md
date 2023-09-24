@@ -2,12 +2,16 @@
 Artificial Neural Network with 't' Distribution Portfolio 
 
 # SINGLE COMMAND FOR THE ENTIRE PACKAGE AFTER INSTALLING THE REQUIRED PACKAGES#
-ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily', 5, 2500, 3)
+        install.packages('remotes')
+        library(remotes)
+        
+        ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily', 5, 2500, 3)
+        
 
 Follow the steps for the test step by step:
 
 # 1) Install and enable remotes package: 
-       # install.packages('remotes')
+        install.packages('remotes')
         library(remotes)
 # 2) Install and enable the ANNt package: 
         install_github('aleoli05/ANNt') 
