@@ -34,7 +34,7 @@ Assets_series (Tickers=c('AAPL','GOOG','CCBG','XOM','TSLA'),'^GSPC', '2018-01-03
          Plot_efficient_frontier()
 # 11) Plot the New Efficient Frontier:
          Plot_New_Efficient_Frontier()
-# 12) Plot the Cumulative Sum of Returns (CUSUM Graaphic):
+# 12) Plot the Cumulative Sum of Returns (CUSUM Graphic):
          Plot_CUSUM(1,5)
 # 13) Save copy of alls processed data, example: 
          Backup_ANNt()
