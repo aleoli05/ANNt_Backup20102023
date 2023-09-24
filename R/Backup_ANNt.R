@@ -36,6 +36,10 @@ Backup_ANNt <- function(){
   load('~/Stepmax.rda')
   load('~/Rf.rda')
   load('~/Until_Date.rda')
+  if(Final_Date==''){
+    load('~/scenario.set.rda')
+    Final_Date = rownames(as.data.frame(scenario.set)[nrow(scenario.set),])
+  }
   Values=c(tickers)
   for(k in (2:length((Values)))){
   Readme_ANNt[1,k]=Values[k]
