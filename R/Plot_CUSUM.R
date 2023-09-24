@@ -65,7 +65,7 @@ for (j in 1:(Number_obs)){
   Tabela_CUSUM[j,3]= RetornoMedioMaxIS_RNAt[j]-mean(RetornoMedioMaxIS_RNAt)+k
   Tabela_CUSUM[j,4]= max(0,Tabela_CUSUM[j,3]+Anterior_1)
   Tabela_CUSUM[j,5]= mean(RetornoMedioMaxIS_RNAt)-k-RetornoMedioMaxIS_RNAt[j]
-  Tabela_CUSUM[j,6]= max(0,Tabela_CUSUM[j,5]+Anterior_2)
+  Tabela_CUSUM[j,6]= -max(0,Tabela_CUSUM[j,5]+Anterior_2)
   Tabela_CUSUM[j,7]= mean(RetornoMedioMaxIS_RNAt)+h
   Tabela_CUSUM[j,8]= mean(RetornoMedioMaxIS_RNAt)-h
   Tabela_CUSUM[j,9]= -Limites_grafico+j*Variacao_grafico
@@ -79,7 +79,7 @@ windowsFonts(A=windowsFont("Times New Roman"))
 par(family="A")
 
 png(file="~/Plot_CUSUM.png", width=1920, height=1200, res=296, family = "A")
-cores=c("darkgreen","gray", "darkred","red")
+cores=c("darkgreen","red", "blue","darkred")
 Eixo = c(1:nrow(Comparativo))
 Eixo_X = rownames(as.data.frame(Comparativo_RETORNOS))
 Comparativo2 = as.data.frame(Comparativo_RETORNOS)
@@ -103,39 +103,39 @@ plot(Tabela_CUSUM[,1],Tabela_CUSUM[,9],
      type = "n",
      #xaxt = "n",
      xlim = c(0, nrow(Tabela_CUSUM)),
-    ylim = c(min(Tabela_CUSUM[,9]), max(Tabela_CUSUM[,9])))
+     ylim = c(min(Tabela_CUSUM[,9]), max(Tabela_CUSUM[,9])))
 
 lines(Tabela_CUSUM[,1],Tabela_CUSUM[,4],
-           ylab="Cumulative Sum", xlab="Observation",
-           type = "b",
-           col="darkgreen",
-          pch=19,
-           #cex.lab = 0.8,
-           #cex.axis = 0.8,
+      ylab="Cumulative Sum", xlab="Observation",
+      type = "b",
+      col="darkgreen",
+      pch=19,
+      #cex.lab = 0.8,
+      #cex.axis = 0.8,
       cex=0.6
-     )
+)
 lines(Tabela_CUSUM[,1],Tabela_CUSUM[,6],
-     ylab="Return", xlab="Observation",
-     type = "b",
-     col="gray",
-     pch=19,
-     #cex.lab = 0.8,
-     #cex.axis = 0.8,
-     cex=0.6
+      ylab="Return", xlab="Observation",
+      type = "b",
+      col="red",
+      pch=19,
+      #cex.lab = 0.8,
+      #cex.axis = 0.8,
+      cex=0.6
 )
 lines (Tabela_CUSUM[,1],Tabela_CUSUM[,7],
-     ylab="Return", xlab="Observation",
-     type = "l",
-     col="darkred",
-     #cex.lab = 0.8,
-     #cex.axis = 0.8,
+       ylab="Return", xlab="Observation",
+       type = "l",
+       col="blue",
+       #cex.lab = 0.8,
+       #cex.axis = 0.8,
 )
 lines(Tabela_CUSUM[,1],Tabela_CUSUM[,8],
-     ylab="Return", xlab="Observation",
-     type = "l",
-     col="red",
-     #cex.lab = 0.8,
-     #cex.axis = 0.8,
+      ylab="Return", xlab="Observation",
+      type = "l",
+      col="darkred",
+      #cex.lab = 0.8,
+      #cex.axis = 0.8,
 )
 text(x=max(Tabela_CUSUM[,1]-20), y=max(Tabela_CUSUM[,9]),
      label=paste("H =",Control), cex = 0.6
@@ -150,9 +150,9 @@ title(main = paste(
 #text(x=Base_Palomar[4,],y=Base_Palomar[1,],
 #
 legend("bottomright", cex= 0.6, legend = c(    "CuSum+",
-                                           "CuSum-",
-                                           "ULC",
-                                           "LLC"),
+                                               "CuSum-",
+                                               "ULC",
+                                               "LLC"),
        pch = 19,
        #lwd = 3,
        #bty = "o",
@@ -165,7 +165,7 @@ dev.off()
 
 ################################################################################
 
-cores=c("darkgreen","gray", "darkred","red")
+cores=c("darkgreen","red", "blue","darkred")
 Eixo = c(1:nrow(Comparativo))
 Eixo_X = rownames(as.data.frame(Comparativo_RETORNOS))
 Comparativo2 = as.data.frame(Comparativo_RETORNOS)
@@ -205,7 +205,7 @@ lines(Tabela_CUSUM[,1],Tabela_CUSUM[,4],
 lines(Tabela_CUSUM[,1],Tabela_CUSUM[,6],
       ylab="Return", xlab="Observation",
       type = "b",
-      col="gray",
+      col="red",
       pch=19,
       #cex.lab = 0.8,
       #cex.axis = 0.8,
@@ -214,14 +214,14 @@ lines(Tabela_CUSUM[,1],Tabela_CUSUM[,6],
 lines (Tabela_CUSUM[,1],Tabela_CUSUM[,7],
        ylab="Return", xlab="Observation",
        type = "l",
-       col="darkred",
+       col="blue",
        #cex.lab = 0.8,
        #cex.axis = 0.8,
 )
 lines(Tabela_CUSUM[,1],Tabela_CUSUM[,8],
       ylab="Return", xlab="Observation",
       type = "l",
-      col="red",
+      col="darkred",
       #cex.lab = 0.8,
       #cex.axis = 0.8,
 )

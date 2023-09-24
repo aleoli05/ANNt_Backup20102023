@@ -121,7 +121,7 @@ lines(x=c(rep(max(Base_Palomar[4,]), length(yn))),y=yn,
       #xlim = c(0.01, 0.07),
       lty=1
 )
-text(x=(max(Base_Palomar[4,])+0.03), y=mean(Base_Palomar[1,])+0.0002,
+text(x=(max(Base_Palomar[4,])+0.02), y=mean(Base_Palomar[1,])+0.0002,
      labels = "NEF",
      col="black",
      cex = 0.6,
@@ -129,7 +129,7 @@ text(x=(max(Base_Palomar[4,])+0.03), y=mean(Base_Palomar[1,])+0.0002,
 )
 arrows(x0 = (max(Base_Palomar[4,])+0.05), y0 = mean(Base_Palomar[1,]),
        x1 = max(Base_Palomar[4,]), y1 = mean(Base_Palomar[1,]),
-       length = 0.1)
+       length = 0.08)
 legend(x="topleft",
        legend=c("SP500", "MF_SHARPE", "ANNt",
                 "MARKOWITZ","SHARPE"),
@@ -216,7 +216,7 @@ lines(x=c(rep(max(Base_Palomar[4,]), length(yn))),y=yn,
       #xlim = c(0.01, 0.07),
       lty=1
 )
-text(x=(max(Base_Palomar[4,])+0.03), y=mean(Base_Palomar[1,])+0.0002,
+text(x=(max(Base_Palomar[4,])+0.02), y=mean(Base_Palomar[1,])+0.0002,
      labels = "NEF",
      col="black",
      cex = 0.6,
@@ -224,7 +224,7 @@ text(x=(max(Base_Palomar[4,])+0.03), y=mean(Base_Palomar[1,])+0.0002,
 )
 arrows(x0 = (max(Base_Palomar[4,])+0.05), y0 = mean(Base_Palomar[1,]),
        x1 = max(Base_Palomar[4,]), y1 = mean(Base_Palomar[1,]),
-       length = 0.1)
+       length = 0.08)
 legend(x="topleft",
        legend=c("SP500", "MF_SHARPE", "ANNt",
                 "MARKOWITZ","SHARPE"),
