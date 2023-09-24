@@ -127,9 +127,9 @@ text(x=(max(Base_Palomar[4,])+0.02), y=mean(Base_Palomar[1,])+0.0002,
      cex = 0.6,
      adj = 0
 )
-arrows(x0 = (max(Base_Palomar[4,])+0.05), y0 = mean(Base_Palomar[1,]),
+arrows(x0 = (max(Base_Palomar[4,])+0.03), y0 = mean(Base_Palomar[1,]),
        x1 = max(Base_Palomar[4,]), y1 = mean(Base_Palomar[1,]),
-       length = 0.08)
+       length = 0.1)
 legend(x="topleft",
        legend=c("SP500", "MF_SHARPE", "ANNt",
                 "MARKOWITZ","SHARPE"),
@@ -222,9 +222,9 @@ text(x=(max(Base_Palomar[4,])+0.02), y=mean(Base_Palomar[1,])+0.0002,
      cex = 0.6,
      adj = 0
 )
-arrows(x0 = (max(Base_Palomar[4,])+0.05), y0 = mean(Base_Palomar[1,]),
+arrows(x0 = (max(Base_Palomar[4,])+0.03), y0 = mean(Base_Palomar[1,]),
        x1 = max(Base_Palomar[4,]), y1 = mean(Base_Palomar[1,]),
-       length = 0.08)
+       length = 0.1)
 legend(x="topleft",
        legend=c("SP500", "MF_SHARPE", "ANNt",
                 "MARKOWITZ","SHARPE"),

@@ -21,7 +21,8 @@ Backup_ANNt <- function(){
              'Hidden',
              'Stepmax',
              'Rf',
-             'Until_Date')
+             'Until_Date',
+             'N_Assets')
   Readme_ANNt[1:length(Inputs),1]=Inputs
   load('~/Tickers.rda')
   load('~/RM.rda')
@@ -36,6 +37,7 @@ Backup_ANNt <- function(){
   load('~/Stepmax.rda')
   load('~/Rf.rda')
   load('~/Until_Date.rda')
+  load('~/N_Assets.rda')
   if(Final_Date==''){
     load('~/scenario.set.rda')
     Final_Date = rownames(as.data.frame(scenario.set)[nrow(scenario.set),])
@@ -54,7 +56,8 @@ Backup_ANNt <- function(){
                   Hidden,
                   Stepmax,
                   Rf,
-                  Until_Date)
+                  Until_Date,
+                  N_Assets)
     for(i in (1:length((Values_inputs)))){
     Readme_ANNt[i+1,2]=Values_inputs[i]
   }
