@@ -4,8 +4,8 @@
 #'@param RM Proxy of the market
 #'@param Rf Risk free rate
 #'@param Initial_Date Series start Date, format ('Year-Month-Day'). Assets with values not observed in the series are excluded
-#'@param Initial_Date_Training
-#'@param Final_Date
+#'@param Initial_Date_Training Training series start Date
+#'@param Final_Date End date of the treatment series
 #'@param Periodicity should be one of “daily”, “weekly”, “monthly”, “hourly”, “1minutes”, “2minutes”, “5minutes”, “15minutes”, “30minutes”, “60minutes”, “90minutes”. (Intraday maximum 7 days)
 #'@param Hidden Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons
 #'@param Stepmax Number of replications per asset to train the ANN. For a good performance, use 7500

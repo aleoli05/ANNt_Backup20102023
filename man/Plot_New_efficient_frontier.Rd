@@ -2,8 +2,8 @@
 % Please edit documentation in R/Plot_New_efficient_frontier.R
 \name{Plot_New_efficient_frontier}
 \alias{Plot_New_efficient_frontier}
-\title{Plot_New_efficient_frontier
-Generate the new efficient frontier}
+\title{Plot New efficient frontier:
+generate the new efficient frontier}
 \usage{
 Plot_New_efficient_frontier()
 }
@@ -11,8 +11,9 @@ Plot_New_efficient_frontier()
 \item{()}{No require parameters}
 }
 \description{
-Plot_New_efficient_frontier
-Generate the new efficient frontier
+This chart presents the assets most likely to outperform the benchmark.
+The selection of assets must occur from right to left, as indicated by the arrow.
+Allows you to select the assets that should be included in the portfolio to obtain high performance.
 }
 \examples{
 Plot_New_efficient_frontier()

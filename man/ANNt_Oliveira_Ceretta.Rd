@@ -27,6 +27,8 @@ ANNt_Oliveira_Ceretta(
 
 \item{Initial_Date}{Series start Date, format ('Year-Month-Day'). Assets with values not observed in the series are excluded}
 
+\item{Final_Date}{End date of the treatment series}
+
 \item{Periodicity}{should be one of “daily”, “weekly”, “monthly”, “hourly”, “1minutes”, “2minutes”, “5minutes”, “15minutes”, “30minutes”, “60minutes”, “90minutes”. (Intraday maximum 7 days)}
 
 \item{Hidden}{Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons}
@@ -34,6 +36,8 @@ ANNt_Oliveira_Ceretta(
 \item{Stepmax}{Number of replications per asset to train the ANN. For a good performance, use 7500}
 
 \item{N_Assets}{Limit of asset numbers in the portfolio}
+
+\item{Initial_Date_Training}{Training series start Date}
 }
 \description{
 ANNt_Oliveira_Ceretta

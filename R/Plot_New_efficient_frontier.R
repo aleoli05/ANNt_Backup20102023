@@ -1,5 +1,9 @@
-#' Plot_New_efficient_frontier
-#' Generate the new efficient frontier
+#' Plot New efficient frontier:
+#' generate the new efficient frontier
+#' @description
+#' This chart presents the assets most likely to outperform the benchmark.
+#' The selection of assets must occur from right to left, as indicated by the arrow.
+#' Allows you to select the assets that should be included in the portfolio to obtain high performance.
 #' @param () No require parameters
 #' @examples
 #' Plot_New_efficient_frontier()

@@ -338,12 +338,20 @@ if (x==1) {
   cat("\n", paste0(names(scenario.set), "\n"))
 
   chart.Bar(scenario.set[,1])
-  charts.PerformanceSummary(scenario.set[,1])
+  #charts.PerformanceSummary(scenario.set[,1])
 
-  png(file="~/Chart_RM.png", width=1920, height=1200, res=296)
-    Chart_RM=(charts.PerformanceSummary(scenario.set[,1]))
+  #ng(file="~/Chart_RM.png", width=1920, height=1200, res=296)
+  png(file="~/Chart_RM.png")
+  op <- par(new = TRUE)
+  windowsFonts(A=windowsFont("Times New Roman"))
+  par(family="A")
+  cex=0.5
+  Chart_RM=(charts.PerformanceSummary(scenario.set[,1],main=paste("Performance of", RM)))
     dev.off()
-
-  Chart_RM=(charts.PerformanceSummary(scenario.set[,1]))
+    op <- par(new = TRUE)
+    windowsFonts(A=windowsFont("Times New Roman"))
+    par(family="A")
+    cex=0.5
+  charts.PerformanceSummary(scenario.set[,1],main=paste("Performance of", RM))
   #########################################
 }

@@ -264,12 +264,21 @@ ___________________________________________________________________
     #ggsave(arquivo,p1)
     #pdf(file=arquivo, height = 8, width = 9)
     #pdf(file=arquivo)
+
     if (ativo==ncol(dados)){
       dev.off()
       #op <- par(new = TRUE)
       #windowsFonts(A=windowsFont("Times New Roman"))
       #par(family="A")
-     plot(nnplot)
+     #png(file="~/ANN.png", width=1920, height=1200, res=296)
+     #png(file="~/ANN.png")
+     #ANN= plot(nnplot,main ="Artificial Neural Network")
+     #save(ANN,file="~/ANN.png")
+      #op <- par(new = TRUE)
+      #windowsFonts(A=windowsFont("Times New Roman"))
+      #par(family="A")
+     plot(nnplot, main ="Artificial Neural Network")
+
     }
     #dev.off()
     #p1 <- plot(nnplot)
