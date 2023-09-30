@@ -58,7 +58,7 @@ ANNt_order <- function(Initial_Date_Training, Final_Date_Training, Final_Date_Te
    Stepmax=x3
  }
  if (Hidden==''){
-   Cont1=nrow(dados)-5
+   Cont1=which(rownames(scenario.set)==Final_Date_Training)-5
  } else{
    Cont1=Hidden
  }
