@@ -48,8 +48,10 @@ for (i in 2:10){xn[i] = x1*i}
 yn= (mean_sharpe-((1+Rf)^(1/252)-1))/sd_sharpe*xn +((1+Rf)^(1/252)-1)
 
 ########################################################################################
+ydev=dev.list()
+if(class(ydev)!="NULL"){
 dev.off()
-
+}
 op <- par(new = TRUE)
 windowsFonts(A=windowsFont("Times New Roman"))
 par(family="A")

@@ -34,9 +34,11 @@ load('~/Comparativo.rda')
 load('~/Initial_Analysis_Date.rda')
 load('~/Final_Analysis_Date.rda')
 load('~/Final_Date_Testing.rda')
+ydev=dev.list()
 
+if(class(ydev)!="NULL"){
 dev.off()
-
+}
 ################################################################################
 #### CUSUM
 RetornoMedioMaxIS_RNAt=as.data.frame(Comparativo_RETORNOS)$ANNt_SHARPE
