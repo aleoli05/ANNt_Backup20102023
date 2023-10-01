@@ -60,9 +60,9 @@ ___________________________________________________________________
   scenario.set = data.frame(scenario.set)
   if(class(Initial_Date_Testing)!=('numeric')){
     Datas1Predict = rownames(scenario.set)[
-      (which(rownames(scenario.set)==Initial_Date_Testing)):(nrow(scenario.set)-1)]
+      (which(rownames(scenario.set)==Initial_Date_Testing)):(which(rownames(scenario.set)==Final_Date_Testing))]
   }else{
-    Datas1Predict = rownames(scenario.set)[(Initial_Date_Testing+6):(nrow(scenario.set)-1)]
+    Datas1Predict = rownames(scenario.set)[(Initial_Date_Testing+6):(which(rownames(scenario.set)==Final_Date_Testing))]
   }
 
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])
@@ -306,6 +306,7 @@ ___________________________________________________________________
   port.sec <- add.objective(portfolio = port.sec, type = "return", name = "mean")
   port.sec <- add.constraint(portfolio = port.sec, type = "full_investiment")
   port.sec <- add.constraint(portfolio = port.sec, type = "box", min = 0, max = 1)
+
 
   # map off efficient frontier (for variance risk)
   eff.frontier <- create.EfficientFrontier(R = all.returns, portfolio = port.sec,
