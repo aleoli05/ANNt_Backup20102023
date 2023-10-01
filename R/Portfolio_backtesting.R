@@ -10,6 +10,7 @@ Portfolio_backtesting <- function() {
 
   options(warn=-1)
   load('~/Comparativo_RETORNOS.rda')
+  load('~/RM.rda')
   load('~/Rf.rda')
   attach(as.data.frame(Comparativo_RETORNOS))
 
@@ -273,7 +274,7 @@ Portfolio_backtesting <- function() {
   sumbacktest[7,11]= round(ITreynor(MF_SHARPE, Comparativo_RETORNOS[,1], 0.0311)*100,2)
   sumbacktest[8,11]= round(ITreynor(ANNt_SHARPE, Comparativo_RETORNOS[,1], 0.0311)*100,2)
 
-  rownames(sumbacktest)= c("MF_Mkv","SP500", "ANNt_Eq", "Markowitz", "ANNt_Mkv",
+  rownames(sumbacktest)= c("MF_Mkv", RM, "ANNt_Eq", "Markowitz", "ANNt_Mkv",
                            "MaxSharpe", "MF_Sharpe", "ANNt_Sharpe")
   colnames(sumbacktest) = c("Average Return (% p.d.)","Annualized Return (% p.a.)",
                             "Cumulative Return (% p.p.)", "Annualized Volatility (% p.a.)",
@@ -282,6 +283,7 @@ Portfolio_backtesting <- function() {
                             "CAPM Beta", "Jensen´s Alpha (% p.d.)", "Treynor (% p.d.)")
   Summary_Backtest = sumbacktest
   View(Summary_Backtest)
+  save(Summary_Backtest, file="Summary_Backtest.rda")
   Portfolio = rownames(as.data.frame(sumbacktest))
   SUMBACKTEST_Df = mutate(as.data.frame(Portfolio),
                           as.data.frame(sumbacktest))
