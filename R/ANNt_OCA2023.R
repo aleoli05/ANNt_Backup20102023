@@ -22,10 +22,9 @@
 #'Hidden <- ''
 #'Stepmax <- 7500
 #'N_Assets <- 5
-#'ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0, '2018-01-10', '2020-01-20', '', 'daily','',7500,5)
+#'ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-10', '2020-01-20', '', 'daily','',7500,5)
 #'@export
-ANNt_OCA2023 <- function(Tickers, Initial_Date, Final_Date_Training, Final_Date, Periodicity,
-                         Hidden, Stepmax, N_Assets){
+ANNt_OCA2023 <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, N_Assets){
   Tickers <- 'Current_SP500_Tickers'
 
   #RM <-c('^GSPC') #RM the S&P500

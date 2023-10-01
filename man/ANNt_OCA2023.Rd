@@ -7,6 +7,8 @@ reproduce Oliveira, Ceretta, & Albrecht (2023)}
 \usage{
 ANNt_OCA2023(
   Tickers,
+  RM,
+  Rf,
   Initial_Date,
   Final_Date_Training,
   Final_Date,
@@ -18,6 +20,8 @@ ANNt_OCA2023(
 }
 \arguments{
 \item{Tickers}{Current SP500 Tickers on 2022-07-12}
+
+\item{RM}{Proxy of the market: SP500}
 
 \item{Initial_Date}{Series start Date: 2018-01-10}
 
@@ -32,8 +36,6 @@ ANNt_OCA2023(
 \item{Stepmax}{Number of replications per asset to train the ANN. For a good performance, use 7500}
 
 \item{N_Assets}{Limit of asset numbers in the portfolio}
-
-\item{RM}{Proxy of the market: SP500}
 }
 \description{
 For more details see:
@@ -50,5 +52,5 @@ Periodicity <- c('daily')
 Hidden <- ''
 Stepmax <- 7500
 N_Assets <- 5
-ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0, '2018-01-10', '2020-01-20', '', 'daily','',7500,5)
+ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-10', '2020-01-20', '', 'daily','',7500,5)
 }
