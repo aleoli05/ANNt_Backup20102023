@@ -299,11 +299,42 @@ ___________________________________________________________________
   if(ncol(all.returns)>100){
     all.returns <- all.returns[1:(nrow(all.returns)-Remover),]
   }
+  ##############################################################################
+  ######## Sharpe Calculate
+  ##############################################################################
   if(Final_Date_Testing=='2022-07-12'){
     all.returns <- all.returns[1:(nrow(all.returns)-60),]
-  }
 
-  ## set up portfolio with objetive and constraints
+
+    init.portf <- portfolio.spec(assets = symbols)
+    init.portf <- add.constraint(portfolio = init.portf, type = "full_investment")
+    init.portf <- add.constraint(portfolio = init.portf, type = "long_only")
+    init.portf <- add.objective(portfolio = init.portf, type = "return", name = "mean")
+    init.portf
+
+    init.portf <- add.constraint(portfolio = init.portf, type = "risk",
+                                 name = "StdDev", multiplier = 0)
+    port1 <- add.constraint(portfolio = init.portf,
+                            type = "diversification", min=0, max=1,
+                            indexnum=2)
+    port1 <- add.constraint(portfolio = init.portf, type = "risk", name = "StdDev")
+
+
+    ### Carteira Sharpe todos os ativos
+    maxSRport.rp <- optimize.portfolio(R=all.returns,
+                                      portfolio = port1,
+                                       optimize_method = "random",
+                                      search_size = 20000,
+                                     maxSR=TRUE, trace = TRUE)
+    maxSRport.rp
+
+    weight_test <- extractWeights(maxSRport.rp)
+
+
+
+  } else{
+
+  ####### set up portfolio with objetive and constraints
   n.assets <- length(colnames(all.returns))
   port.sec <- portfolio.spec(assets = colnames(all.returns))
   port.sec <- add.objective(portfolio = port.sec, type = "risk", name = "StdDev")
@@ -334,6 +365,11 @@ ___________________________________________________________________
 
   #print("Optimal weights")
   weight_test <- eff.frontier$frontier[optimal.port.name,(1:n.assets)+3]
+
+  }
+  #########################################
+
+
   weight_test <- round(weight_test,4)
   weight_Sharpe= weight_test[which(weight_test !=0)]
   weight_Sharpe
@@ -350,7 +386,9 @@ ___________________________________________________________________
   #RetornoMedioMaxIS = as.matrix(TodosAtivosPredict)%*% maxSR.weight.rp
   RetornoMedioMaxIS = as.matrix(TodosAtivosPredict)%*% weight_test
 
+  ##############################################################################
   ### Carteira Sharpe MF_DFA
+  ##############################################################################
   ## Optmization
   #symbols_MFractal = colnames(C_MFractal)
   #init.portf.MF <- portfolio.spec(assets = symbols_MFractal)
@@ -425,8 +463,9 @@ ___________________________________________________________________
   ### Retornos carteira Sharpe MF_DFA Multifractal
   RetornoMedioMaxIS_MFractal = as.matrix(C_MFractal)%*% weight_test_MF
 
-
+################################################################################
   ### Carteira Sharpe RNAt
+  ##############################################################################
   ## Optmization
   #symbols_RNAt = colnames(C_Net_T_comparativa)
 
