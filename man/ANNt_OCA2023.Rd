@@ -29,13 +29,13 @@ ANNt_OCA2023(
 
 \item{Final_Date}{End date of the treatment series: 2022-07-12}
 
-\item{Periodicity}{should be one of “daily”, “weekly”, “monthly”, “hourly”, “1minutes”, “2minutes”, “5minutes”, “15minutes”, “30minutes”, “60minutes”, “90minutes”. (Intraday maximum 7 days)}
+\item{Periodicity}{In the study should be one of “daily”}
 
-\item{Hidden}{Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons}
+\item{Hidden}{Number of hidden neurons. In the study use '' to form a square input x hidden matrix of neurons}
 
-\item{Stepmax}{Number of replications per asset to train the ANN. For a good performance, use 7500}
+\item{Stepmax}{Number of replications per asset to train the ANN. In the study use 7500}
 
-\item{N_Assets}{Limit of asset numbers in the portfolio}
+\item{N_Assets}{Limit of asset numbers in the portfolio: Use 5, 10, 15 or 20 to replicate the study}
 }
 \description{
 For more details see:

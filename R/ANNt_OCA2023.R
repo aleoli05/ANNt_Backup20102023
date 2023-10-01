@@ -7,10 +7,10 @@
 #'@param Initial_Date Series start Date: 2018-01-10
 #'@param Final_Date_Training Training series start Date: 2020-01-20
 #'@param Final_Date End date of the treatment series: 2022-07-12
-#'@param Periodicity should be one of “daily”, “weekly”, “monthly”, “hourly”, “1minutes”, “2minutes”, “5minutes”, “15minutes”, “30minutes”, “60minutes”, “90minutes”. (Intraday maximum 7 days)
-#'@param Hidden Number of hidden neurons (If ” is the length series). For a good performance use '' to form a square input x hidden matrix of neurons
-#'@param Stepmax Number of replications per asset to train the ANN. For a good performance, use 7500
-#'@param N_Assets Limit of asset numbers in the portfolio
+#'@param Periodicity In the study should be one of “daily”
+#'@param Hidden Number of hidden neurons. In the study use '' to form a square input x hidden matrix of neurons
+#'@param Stepmax Number of replications per asset to train the ANN. In the study use 7500
+#'@param N_Assets Limit of asset numbers in the portfolio: Use 5, 10, 15 or 20 to replicate the study
 #'@examples
 #'Tickers <-'Current_SP500_Tickers'
 #'RM <-c('^GSPC') #RM the S&P500
