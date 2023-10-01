@@ -297,8 +297,12 @@ ___________________________________________________________________
   #}
   Remover= nrow(all.returns)-Contador
   if(ncol(all.returns)>100){
-    all.returns <- all.returns[-(1:Remover),]
+    all.returns <- all.returns[1:(nrow(all.returns)-Remover),]
   }
+  if(Final_Date_Testing=='2022-07-12'){
+    all.returns <- all.returns[1:(nrow(all.returns)-60),]
+  }
+
   ## set up portfolio with objetive and constraints
   n.assets <- length(colnames(all.returns))
   port.sec <- portfolio.spec(assets = colnames(all.returns))

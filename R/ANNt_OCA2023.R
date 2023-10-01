@@ -53,7 +53,7 @@ ANNt_OCA2023 <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Fin
   Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily')
   Final_Date_Training <- Final_Date_Training
   ANNt_order ('', '', '2022-07-12', 'hidden', 'stepmax')
-  Gen_portfolios('n_Assets',Initial_Date_Testing,'2022-07-07',0)
+  Gen_portfolios('n_Assets',Initial_Date_Testing,'2022-07-12',0)
   Portfolio_backtesting()
   Plot_Cumulative_Returns('')
   Gen_efficient_frontier('','')
