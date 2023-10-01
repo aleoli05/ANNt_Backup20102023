@@ -64,7 +64,7 @@ ___________________________________________________________________
   }else{
     Datas1Predict = rownames(scenario.set)[(Initial_Date_Testing+6):(which(rownames(scenario.set)==Final_Date_Testing))]
   }
-
+  save(Datas1Predict,file='~/Datas1Predict.rda')
   PosCovidSP500 = as.matrix(scenario.set[Datas1Predict,1])
   colnames(PosCovidSP500)=colnames(scenario.set[1])
   rownames(PosCovidSP500)=Datas1Predict
