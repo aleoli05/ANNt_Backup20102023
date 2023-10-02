@@ -41,7 +41,7 @@ Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf
   }
   dados2=data.frame(dados)
   cat(paste("
-           Estimated total processing time: ", Tempo, Unidade,"
+   Estimating portfolios, total processing time: ", Tempo, Unidade,"
 ___________________________________________________________________
 ", sep=""))
 
@@ -126,7 +126,7 @@ ___________________________________________________________________
 
     # Calculo das defasagens para cada ativo
     dat_MF <- data.frame(dados[,ativo])
-
+    rownames(dat_MF)=rownames(dados)
     Inicio_data = Initial_Date_Testing
     Fim_data = Final_Date_Testing
     I_data = which(rownames(dat_MF)==Inicio_data)
