@@ -1,7 +1,7 @@
 Package: ANNt
 Type: Package
 Title: Artificial Neural Network with 't' Distribution Portfolio
-Version: 0.1.1
+Version: 1.1.1
 Authors: Alexandre Silva de Oliveira and Paulo Sergio Ceretta
 Maintainer: The package maintainer <aleoli05@gmail.com> <ceretta10@gmail.com>
 Description: Portfolio optimization system using Artificial Neural Networks. 
