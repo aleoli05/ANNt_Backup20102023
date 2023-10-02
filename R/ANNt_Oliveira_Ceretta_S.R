@@ -238,7 +238,7 @@ ANNt_order ('', '', '', 'hidden', 'stepmax')
 RM=RM_Original
 save(RM, file="~/RM.rda")
 load('~/scenario.set.rda')
-colnames(scenario.set)[1]=RM
+scenario.set=Portfolio_with_RM_Original
 save(scenario.set, file="~/scenario.set.rda")
 
 Gen_portfolios('n_Assets',Initial_Date_Testing,'',0)
