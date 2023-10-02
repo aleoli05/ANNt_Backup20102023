@@ -59,12 +59,13 @@ load("~/Initial_Date.rda") # Carrega objeto scenario.set
 
 
 # Duração do processamento 1720/length(dados)=1.2 min)
-load("~/scenario.set.rda") # Carrega objeto scenario.set
+#load("~/scenario.set.rda") # Carrega objeto scenario.set
 load("~/T8.rda") # Carrega objeto scenario.set
 load("~/I_dataPredict.rda") # Carrega objeto scenario.set
 load("~/F_dataPredict.rda") # Carrega objeto scenario.set
 load("~/Initial_Date_Testing.rda")
-
+load("~/Final_Date_Testing.rda")
+scenario.set=data.frame(scenario.set)
 # h is the number of assets, case the ANNt_Oliveira_Ceretta went used
 if(N_Assets=='n_Assets'){
   load('~/x4.rda')
