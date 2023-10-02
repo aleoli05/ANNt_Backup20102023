@@ -9,7 +9,7 @@
 #'@param Final_Date End date of the treatment series: 2022-07-12
 #'@param Periodicity In the study should be one of “daily”
 #'@param Hidden Number of hidden neurons. In the study use '' to form a square input x hidden matrix of neurons
-#'@param Stepmax Number of replications per asset to train the ANN. In the study use 7500
+#'@param Stepmax Number of replications per asset to train the ANN. In the study use 10000
 #'@param N_Assets Limit of asset numbers in the portfolio: Use 5, 10, 15 or 20 to replicate the study
 #'@examples
 #'Tickers <-'Current_SP500_Tickers'
@@ -20,9 +20,9 @@
 #'Final_Date <-c('2022-07-12')
 #'Periodicity <- c('daily')
 #'Hidden <- ''
-#'Stepmax <- 7500
+#'Stepmax <- 10000
 #'N_Assets <- 5
-#'ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-11', '2020-01-21', '', 'daily','',7500,5)
+#'ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-11', '2020-01-17', '', 'daily','',10000,5)
 #'@export
 ANNt_OCA2023 <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, N_Assets){
   Tickers <- 'Current_SP500_Tickers'
@@ -56,12 +56,12 @@ ANNt_OCA2023 <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Fin
   Gen_portfolios('n_Assets',Initial_Date_Testing,'2022-07-12',0)
   Portfolio_backtesting()
   Plot_Cumulative_Returns('')
-  Gen_efficient_frontier('','')
-  Plot_efficient_frontier()
-  Sys.sleep((15))
-  Plot_New_efficient_frontier()
-  Sys.sleep((15))
-  Plot_CUSUM('','')
+  #Gen_efficient_frontier('','')
+  #Plot_efficient_frontier()
+  #Sys.sleep((15))
+  #Plot_New_efficient_frontier()
+  #Sys.sleep((15))
+  #Plot_CUSUM('','')
   save(Final_Date, file='~/Final_Date.rda')
   Backup_ANNt()
 }
