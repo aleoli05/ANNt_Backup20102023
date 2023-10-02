@@ -83,7 +83,7 @@ if (Tempo>120){
 }
 dados2=data.frame(dados)
 cat(paste("
-Estimateing Sharpe Portfolio, total processing time: ", Tempo, Unidade,"
+Estimating Sharpe Portfolio, total processing time: ", Tempo, Unidade,"
 ____________________________________________________________________
 ", sep=""))
 
@@ -237,6 +237,9 @@ ANNt_order ('', '', '', 'hidden', 'stepmax')
 
 RM=RM_Original
 save(RM, file="~/RM.rda")
+load('~/scenario.set.rda')
+colnames(scenario.set)[1]=RM
+save(scenario.set, file="~/scenario.set.rda")
 
 Gen_portfolios('n_Assets',Initial_Date_Testing,'',0)
 Portfolio_backtesting()
