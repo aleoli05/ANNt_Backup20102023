@@ -16,7 +16,7 @@
 #'RM <-c('^GSPC') #RM the S&P500
 #'Rf <- 0.0311
 #'Initial_Date <-c('2018-01-11')
-#'Final_Date_Training <- c('2020-01-21')
+#'Final_Date_Training <- c('2020-01-17')
 #'Final_Date <-c('2022-07-12')
 #'Periodicity <- c('daily')
 #'Hidden <- ''

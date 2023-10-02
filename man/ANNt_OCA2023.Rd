@@ -33,7 +33,7 @@ ANNt_OCA2023(
 
 \item{Hidden}{Number of hidden neurons. In the study use '' to form a square input x hidden matrix of neurons}
 
-\item{Stepmax}{Number of replications per asset to train the ANN. In the study use 7500}
+\item{Stepmax}{Number of replications per asset to train the ANN. In the study use 10000}
 
 \item{N_Assets}{Limit of asset numbers in the portfolio: Use 5, 10, 15 or 20 to replicate the study}
 }
@@ -46,11 +46,11 @@ Tickers <-'Current_SP500_Tickers'
 RM <-c('^GSPC') #RM the S&P500
 Rf <- 0.0311
 Initial_Date <-c('2018-01-11')
-Final_Date_Training <- c('2020-01-21')
+Final_Date_Training <- c('2020-01-17')
 Final_Date <-c('2022-07-12')
 Periodicity <- c('daily')
 Hidden <- ''
-Stepmax <- 7500
+Stepmax <- 10000
 N_Assets <- 5
-ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-11', '2020-01-21', '', 'daily','',7500,5)
+ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-11', '2020-01-17', '', 'daily','',10000,5)
 }
