@@ -266,7 +266,11 @@ ___________________________________________________________________
     #pdf(file=arquivo)
 
     if (ativo==ncol(dados)){
-      dev.off()
+
+      ydev=dev.list()
+      if(class(ydev)!="NULL"){
+        dev.off()
+      }
       #op <- par(new = TRUE)
       #windowsFonts(A=windowsFont("Times New Roman"))
       #par(family="A")
