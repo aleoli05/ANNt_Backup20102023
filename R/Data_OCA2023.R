@@ -8,6 +8,7 @@
 #'
 #'@export
 Data_OCA2023<-function(){
+  library(readxl)
   #download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.rda",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
   download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
   #download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.rda",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
