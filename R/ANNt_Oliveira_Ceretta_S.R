@@ -21,13 +21,50 @@
 #'Final_Date <-c('')
 #'Periodicity <- c('daily')
 #'Hidden <- 5
-#'Stepmax <- 2500
+#'Stepmax <- 7500
 #'N_Assets <- 3
-#'ANNt_Oliveira_Ceretta_S(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,2500,3)
+#'ANNt_Oliveira_Ceretta_S(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,3)
 #'@export
 ANNt_Oliveira_Ceretta_S <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, N_Assets){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
+
+  library(quantmod)
+  library(PortfolioAnalytics)
+  library(PerformanceAnalytics)
+  #library(nse2r)
+  library(MFDFA)
+  library(xts)
+  library(quantmod)
+  library(PerformanceAnalytics)
+  library(magrittr)
+  library(fBasics)
+  library(tidyverse)
+  library(stringr)
+  library(dplyr)
+  library(neuralnet)
+  library(zoo)
+  library(forecast)
+  library(timetk)
+  library(moments)
+  library(data.table)
+  library(ggplot2)
+  library(rvest)
+  library(caret)
+  library (readxl)
+  library(writexl)
+  library(portfolio.optimization)
+  library(PortfolioAnalytics)
+  library(ROI)
+  library(fPortfolio)
+  library(timeSeries)
+  library(gridExtra)
+  library(cowplot)
+  library(portfolioBacktest)
+  library(CVXR)
+  library(MFDFA)
+  library(DEoptim)
+  library(IntroCompFinR)
 Initial_Date <-Initial_Date
 x0 = Final_Date
 save(x0, file='~/x0.rda')
@@ -63,8 +100,6 @@ load("~/Initial_Date.rda") # Carrega objeto scenario.set
 load("~/T8.rda") # Carrega objeto scenario.set
 load("~/I_dataPredict.rda") # Carrega objeto scenario.set
 load("~/F_dataPredict.rda") # Carrega objeto scenario.set
-load("~/Initial_Date_Testing.rda")
-load("~/Final_Date_Testing.rda")
 scenario.set=data.frame(scenario.set)
 # h is the number of assets, case the ANNt_Oliveira_Ceretta went used
 if(N_Assets=='n_Assets'){
@@ -84,14 +119,15 @@ if (Tempo>120){
 }
 dados2=data.frame(dados)
 cat(paste("
-Estimating Sharpe Portfolio, total processing time: ", Tempo, Unidade,"
+ Estimating Sharpe Portfolio, total processing time: ", Tempo, Unidade,"
 ____________________________________________________________________
 ", sep=""))
 
 n_assets=N_Assets
 
 if(Initial_Date_Testing==('')){
-  Initial_Date_Testing=Initial_Date_Testing
+  D = which(rownames(scenario.set)==Final_Date_Training)
+  Initial_Date_Testing=Initial_Date_Testing = rownames(as.data.frame(scenario.set)[D+1,])
 }
 if(Final_Date_Testing==('')){
   Final_Date_Testing=rownames(dados2[nrow(dados2),])
@@ -100,11 +136,11 @@ if(Final_Date_Testing==('')){
 
 Rf=Rf/100
 
-scenario.set = data.frame(scenario.set)
 if(class(Initial_Date_Testing)!=('numeric')){
   Datas1Predict = rownames(scenario.set)[
-    (which(rownames(scenario.set)==Initial_Date_Testing)):(which(rownames(scenario.set)==Final_Date_Testing))]
-}else{
+  (which(rownames(scenario.set)==Initial_Date_Testing)):(which(rownames(scenario.set)==Final_Date_Testing))]
+
+  }else{
   Datas1Predict = rownames(scenario.set)[(Initial_Date_Testing+6):(which(rownames(scenario.set)==Final_Date_Testing))]
 }
 save(Datas1Predict,file='~/Datas1Predict.rda')
@@ -113,42 +149,6 @@ colnames(PosCovidSP500)=colnames(scenario.set[1])
 rownames(PosCovidSP500)=Datas1Predict
 TodosAtivosPredict = as.matrix(rbind(scenario.set[Datas1Predict,-1]))
 
-library(quantmod)
-library(PortfolioAnalytics)
-library(PerformanceAnalytics)
-#library(nse2r)
-library(MFDFA)
-library(xts)
-library(quantmod)
-library(PerformanceAnalytics)
-library(magrittr)
-library(fBasics)
-library(tidyverse)
-library(stringr)
-library(dplyr)
-library(neuralnet)
-library(zoo)
-library(forecast)
-library(timetk)
-library(moments)
-library(data.table)
-library(ggplot2)
-library(rvest)
-library(caret)
-library (readxl)
-library(writexl)
-library(portfolio.optimization)
-library(PortfolioAnalytics)
-library(ROI)
-library(fPortfolio)
-library(timeSeries)
-library(gridExtra)
-library(cowplot)
-library(portfolioBacktest)
-library(CVXR)
-library(MFDFA)
-library(DEoptim)
-library(IntroCompFinR)
 options(warn=-1)
 
 

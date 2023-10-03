@@ -23,6 +23,8 @@ Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf
   load("~/I_dataPredict.rda") # Carrega objeto scenario.set
   load("~/F_dataPredict.rda") # Carrega objeto scenario.set
   load("~/Initial_Date_Testing.rda")
+  load("~/Final_Date_Training.rda")
+  load("~/x1.rda")
 
   # h is the number of assets, case the ANNt_Oliveira_Ceretta went used
   if(N_Assets=='n_Assets'){
@@ -48,7 +50,9 @@ ___________________________________________________________________
   n_assets=N_Assets
 
   if(Initial_Date_Testing==('')){
-    Initial_Date_Testing=Initial_Date_Testing
+    Final_Date_Training=x1
+    D = which(rownames(scenario.set)==Final_Date_Training)
+    Initial_Date_Testing=Initial_Date_Testing = rownames(as.data.frame(scenario.set)[D+1,])
   }
   if(Final_Date_Testing==('')){
     Final_Date_Testing=rownames(dados2[nrow(dados2),])
