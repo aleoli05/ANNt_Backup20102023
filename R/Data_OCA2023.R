@@ -53,7 +53,10 @@ Data_OCA2023<-function(){
   Coparativo_Backup = Comparativo
   Comparativo=Comparativo[1:Corte,]
 
-
+  ydev=dev.list()
+  if(class(ydev)!="NULL"){
+    dev.off()
+  }
 
   png(file="~/Graphic_Cumulative_Returns.png", width=1920, height=1920, res=296, family = "A")
   par(#mfrow=c(2,2),
@@ -153,6 +156,10 @@ Data_OCA2023<-function(){
   dev.off()
   ################################################################################
   #Presentation
+  ydev=dev.list()
+  if(class(ydev)!="NULL"){
+    dev.off()
+  }
   par(#mfrow=c(2,2),
     #mar=c(2,2,2,2),
     oma=c(1,1,1,1))
