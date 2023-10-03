@@ -9,11 +9,14 @@
 #'@export
 Data_OCA2023<-function(){
   library(readxl)
+  #download.file("https://github.com/GabauerDavid/ConnectednessApproach/tree/main/data/cg2021.rda",destfile ="~/cg2021.rda")
   #download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.rda",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
-  download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
+  download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
   #download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.rda",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
-  download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
+  download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
   # load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
+  #URL1="https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx"
+  #URL2="https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx"
   Comparativo_OCA2023_5_Assets=read_xlsx("Comparativo_OCA2023_5_Assets.xlsx")
   SUMBACKTEST_OCA2023_5_Assets=read_xlsx("SUMBACKTEST_OCA2023_5_Assets.xlsx")
 
