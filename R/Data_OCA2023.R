@@ -9,21 +9,20 @@
 #'@export
 Data_OCA2023<-function(){
   library(readxl)
-  #download.file("https://github.com/GabauerDavid/ConnectednessApproach/tree/main/data/cg2021.rda",destfile ="~/cg2021.rda")
-  #download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.rda",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
-  download.file("https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
-  #download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.rda",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
-  download.file("https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
+
+  download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Comparativo_OCA2023_5_Assets.rda?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
+  #download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
+
+  download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Summary_Backtest.rda?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
+  #download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
   # load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
   #URL1="https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx"
   #URL2="https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx"
-  Comparativo_OCA2023_5_Assets=read_xlsx("Comparativo_OCA2023_5_Assets.xlsx")
-  SUMBACKTEST_OCA2023_5_Assets=read_xlsx("SUMBACKTEST_OCA2023_5_Assets.xlsx")
+  Comparativo_OCA2023_5_Assets=read_xlsx("~/Comparativo_OCA2023_5_Assets.xlsx")
+  SUMBACKTEST_OCA2023_5_Assets=read_xlsx("~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
 
-   # load('~/Comparativo_OCA2023_5_Assets.rda')
-  #url= "https://github.com/aleoli05/ANNt/blob/main/Comparativo_OCA2023_5_Assets.xlsx"
-  #Comparativo_OCA2023_5_Assets=html_table(read_html(url))
-  #load('SUMBACKTEST_OCA2023_5_Assets.rda')
+  load('~/Comparativo_OCA2023_5_Assets.rda')
+  load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
   View(SUMBACKTEST_OCA2023_5_Assets)
   Comparativo=as.data.frame(Comparativo_OCA2023_5_Assets)
   rownames(Comparativo)=Comparativo[,1]
