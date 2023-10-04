@@ -9,7 +9,7 @@
 #'Name = c("My_Pf")
 #'Portfolio=c("AAPL", "BAC", "CVX", "KO", "AXP", "KHC", "OXY", "MCO") # PORTFOLIO´s Buffet 2023
 #'Weights=c( 0.441, 0.089, 0.079, 0.075, 0.074, 0.038, 0.038, 0.023) # PORTFOLIO weights 2023
-#'Specify_Pf_RM(Portfolio,Weights)
+#'Specify_Pf_RM(Name,Portfolio,Weights)
 #'@export
 Specify_Pf_RM<-function(Name,Portfolio,Weights){
   library(dplyr)
@@ -31,13 +31,14 @@ Specify_Pf_RM<-function(Name,Portfolio,Weights){
   View(PosCovidBuffet)
 
   #View(PosCovidBuffet2)
-  Specific_RM = as.matrix(PosCovidBuffet) %*% PesosBuffetNormalizado
+  Specific_RM = as.matrix(CarteiraBuffet) %*% PesosBuffetNormalizado
   Portfolio_with_RM_Original=scenario.set
   RM_Original=RM
   RM_Specific=Name
   RM=Name
   scenario.set[,1]=Specific_RM
-  colnames(scenario.set)[,1]=Name
+  Nomes_todos=c(Name,colnames(scenario.set[,-1]))
+  colnames(scenario.set)=Nomes_todos
 
   save(RM_Original,file='~/RM_Original.rda')
   save(RM_Specific,file='~/RM_Specific.rda')
