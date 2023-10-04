@@ -17,6 +17,7 @@ Data_OCA2023<-function(){
   download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/SUMBACKTEST_OCA2023_5_Assets.rda",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
   #download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
   #download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Weights2.rda",destfile ="~/Weights.rda")
 
   #download.file("https://github.com/GabauerDavid/ConnectednessApproach/raw/main/data/bcg2022.rda",destfile ="~/bcg2022.rda")
   #load('~/bcg2022.rda')
@@ -39,6 +40,10 @@ Data_OCA2023<-function(){
 
   load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
   View(SUMBACKTEST_OCA2023_5_Assets)
+
+  load('~/Weights.rda')
+  print(Weights)
+
   N_Assets=5
   Final_Date_Testing='2022-07-12'
   Until_Date =''

@@ -8,9 +8,10 @@
 #'@examples
 #'Portfolio=c("AAPL", "BAC", "CVX", "KO", "AXP", "KHC", "OXY", "MCO") # PORTFOLIO´s Buffet 2023
 #'Weights=c( 0.441, 0.089, 0.079, 0.075, 0.074, 0.038, 0.038, 0.023) # PORTFOLIO weights 2023
-#'Specificy_Pf_RM(Portfolio,Weights)
+#'Specify_Pf_RM(Portfolio,Weights)
 #'@export
 Specify_Pf_RM<-function(Name,Portfolio,Weights){
+  library(dplyr)
   #Buffet = c("AAPL", "BAC", "KO", "AXP", "CVX", "KHC", "OXY") # PORTFOLIO_2022
   #PesosBuffet = c( 0.414, 0.102, 0.073, 0.068, 0.068, 0.037, 0.033) # PORTFOLIO_2022
   load('~/scenario.set.rda')
