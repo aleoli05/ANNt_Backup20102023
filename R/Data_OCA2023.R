@@ -9,24 +9,34 @@
 #'@export
 Data_OCA2023<-function(){
   library(readxl)
+  library(readr)
 
-  download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Comparativo_OCA2023_5_Assets.rda?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
-  #download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
-
-  download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/Summary_Backtest.rda?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Comparativo_OCA2023_5_Assets.rda?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.rda")
+  #download.file("https://github.com/aleoli05/ANNt/blob/e13557ee41979bdf316d00cacd207730ce843902/Data_/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comparativo_OCA2023_5_Assets.xlsx")
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Comparativo_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/Comp.xlsx")
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Summary_Backtest.rda",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.rda")
   #download.file("https://github.com/aleoli05/ANNt/blob/a6af38a2857db2fb5a70edb247ae0abf45ab72e2/Data_/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
-  # load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/SUMBACKTEST_OCA2023_5_Assets.xlsx?raw=true",destfile ="~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
+
+  download.file("https://github.com/GabauerDavid/ConnectednessApproach/raw/main/data/bcg2022.rda",destfile ="~/bcg2022.rda")
+  load('~/bcg2022.rda')
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Comparativo_OCA2023_5_Assets.rda?raw=true",destfile ="~/C.rda")
+  load('~/C.rda')
+
+
+  #load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
   #URL1="https://github.com/aleoli05/ANNt/tree/main/Comparativo_OCA2023_5_Assets.xlsx"
   #URL2="https://github.com/aleoli05/ANNt/tree/main/SUMBACKTEST_OCA2023_5_Assets.xlsx"
-  Comparativo_OCA2023_5_Assets=read_xlsx("~/Comparativo_OCA2023_5_Assets.xlsx")
-  SUMBACKTEST_OCA2023_5_Assets=read_xlsx("~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
+  #Comparativo_OCA2023_5_Assets=read_excel("~/Comparativo_OCA2023_5_Assets.xlsx")
+  #Comparativo_OCA2023_5_Assets=read_xls("~/Comparativo_OCA2023_5_Assets.xlsx")
+  #SUMBACKTEST_OCA2023_5_Assets=read_xlsx("~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
 
   load('~/Comparativo_OCA2023_5_Assets.rda')
   load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
-  View(SUMBACKTEST_OCA2023_5_Assets)
-  Comparativo=as.data.frame(Comparativo_OCA2023_5_Assets)
-  rownames(Comparativo)=Comparativo[,1]
-  Comparativo=Comparativo[,-1]
+  #View(SUMBACKTEST_OCA2023_5_Assets)
+  #Comparativo=as.data.frame(Comparativo_OCA2023_5_Assets)
+  #rownames(Comparativo)=Comparativo[,1]
+  #Comparativo=Comparativo[,-1]
   N_Assets=5
   Final_Date_Testing='2022-07-12'
   Until_Date =''
