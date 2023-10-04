@@ -20,7 +20,7 @@ Data_OCA2023<-function(){
 
   download.file("https://github.com/GabauerDavid/ConnectednessApproach/raw/main/data/bcg2022.rda",destfile ="~/bcg2022.rda")
   load('~/bcg2022.rda')
-  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Comparativo_OCA2023_5_Assets.rda?raw=true",destfile ="~/C.rda")
+  download.file("https://github.com/aleoli05/ANNt/raw/main/Data_/Comparativo_OCA2023_5_Assets(2).rda?raw=true",destfile ="~/C.rda")
   load('~/C.rda')
 
 
