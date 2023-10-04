@@ -32,12 +32,12 @@ Data_OCA2023<-function(){
   #SUMBACKTEST_OCA2023_5_Assets=read_xlsx("~/SUMBACKTEST_OCA2023_5_Assets.xlsx")
 
   load('~/Comparativo_OCA2023_5_Assets.rda')
-  load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
-
   Comparativo=as.data.frame(Comparativo_OCA2023_5_Assets)
   rownames(Comparativo)=Comparativo[,1]
   Comparativo=Comparativo[,-1]
   View(Comparativo_OCA2023_5_Assets)
+
+  load('~/SUMBACKTEST_OCA2023_5_Assets.rda')
   View(SUMBACKTEST_OCA2023_5_Assets)
   N_Assets=5
   Final_Date_Testing='2022-07-12'
