@@ -16,7 +16,7 @@ Specify_Pf_RM<-function(Name,Portfolio,Weights){
   #Buffet = c("AAPL", "BAC", "KO", "AXP", "CVX", "KHC", "OXY") # PORTFOLIO_2022
   #PesosBuffet = c( 0.414, 0.102, 0.073, 0.068, 0.068, 0.037, 0.033) # PORTFOLIO_2022
   load('~/scenario.set.rda')
-  load('~/Datas1Predict.rda')
+  #load('~/Datas1Predict.rda')
   load('~/RM.rda')
   load("~/Initial_Date.rda") # Carrega objeto scenario.set
 
@@ -27,8 +27,8 @@ Specify_Pf_RM<-function(Name,Portfolio,Weights){
   PesosBuffetNormalizado = PesosBuffet/sum(PesosBuffet)
   CarteiraBuffet = as.data.frame(scenario.set) %>%
     dplyr::select(which((colnames(scenario.set) %in% Buffet)))
-  PosCovidBuffet = CarteiraBuffet[Datas1Predict,]
-  View(PosCovidBuffet)
+  #PosCovidBuffet = CarteiraBuffet[Datas1Predict,]
+  #View(PosCovidBuffet)
 
   #View(PosCovidBuffet2)
   Specific_RM = as.matrix(CarteiraBuffet) %*% PesosBuffetNormalizado
