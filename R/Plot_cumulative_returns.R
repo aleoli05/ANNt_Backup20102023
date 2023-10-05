@@ -14,6 +14,7 @@ Plot_Cumulative_Returns <- function(Until_Date) {
 load('~/Comparativo.rda')
   load('~/N_Assets.rda')
   load('~/Final_Date_Testing.rda')
+  load('~/RM.rda')
 attach(as.data.frame(Comparativo))
 
 ###Gráfico Comparativo dos Retornos Acumulados das Carteiras
@@ -123,7 +124,7 @@ title(paste("ANNt and Others Portfolios:", N_Assets, "Assets"))
 Contador_MF_DFA = matrix(nrow=149)
 legend("topleft",
        #"bottomright",
-       legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+       legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
                   "ANNt_MKW", "ANNt_SHARPE"),
        cex = 0.8,
@@ -220,7 +221,7 @@ title(paste("ANNt and Others Portfolios:", N_Assets, "Assets"))
 Contador_MF_DFA = matrix(nrow=149)
 legend("topleft",
        #"bottomright",
-       legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+       legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
                   "ANNt_MKW", "ANNt_SHARPE"),
        cex = 0.6,
