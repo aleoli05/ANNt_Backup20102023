@@ -213,7 +213,7 @@ Weight_Sharpe_1 <- t(as.data.frame(weight_Sharpe))
 colnames(Weight_Sharpe_1)<-str_replace(colnames(Weight_Sharpe_1),'w.','')
 rownames(Weight_Sharpe_1)<-'Weight'
 
-print(paste('[5] Weights of the SHARPE Portfolio:'))
+print(paste('Weights of the SHARPE Portfolio:'))
 print(Weight_Sharpe_1)
 #weight
 ### Retornos carteira Sharpe todos os ativos
