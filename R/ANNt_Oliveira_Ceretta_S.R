@@ -65,6 +65,8 @@ ANNt_Oliveira_Ceretta_S <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Tr
   library(MFDFA)
   library(DEoptim)
   library(IntroCompFinR)
+  Signal_Sharpe=1
+  save(Signal_Sharpe,file="~/Signal_Sharpe.rda")
 Initial_Date <-Initial_Date
 x0 = Final_Date
 save(x0, file='~/x0.rda')
@@ -195,6 +197,9 @@ sd_sharpe <- optimal.sd*sqrt(n.trading.days.per.year)
 #print("Optimal weights")
 weight_test <- eff.frontier$frontier[optimal.port.name,(1:n.assets)+3]
 
+save(mean_sharpe,file="~/mean_sharpe.rda")
+save(sd_sharpe,file="~/sd_sharpe.rda")
+save(weight_test,file="~/weight_test.rda")
 
 #########################################
 
@@ -236,6 +241,8 @@ save(scenario.set,file='~/scenario.set.rda')
 Final_Date_Training <- Final_Date_Training
 ANNt_order ('', '', '', 'hidden', 'stepmax')
 
+Signal_Sharpe=0
+save(Signal_Sharpe,file="~/Signal_Sharpe.rda")
 RM=RM_Original
 save(RM, file="~/RM.rda")
 load('~/scenario.set.rda')

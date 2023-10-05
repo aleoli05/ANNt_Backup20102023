@@ -25,6 +25,12 @@ Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf
   load("~/Initial_Date_Testing.rda")
   load("~/Final_Date_Training.rda")
   load("~/x1.rda")
+  if(file.exists("~/Signal_Sharpe.rda")==TRUE){
+  load("~/Signal_Sharpe.rda")
+  }else{
+    Signal_Sharpe=0
+    save(Signal_Sharpe, file="~/Signal_Sharpe.rda")
+  }
 
   # h is the number of assets, case the ANNt_Oliveira_Ceretta went used
   if(N_Assets=='n_Assets'){
@@ -337,7 +343,8 @@ ___________________________________________________________________
 
 
   } else{
-
+  #######################Verify if ANNt_Oliveira_Ceretta_S was ativate###########
+    if(Signal_Sharpe==0){
   ####### set up portfolio with objetive and constraints
   n.assets <- length(colnames(all.returns))
   port.sec <- portfolio.spec(assets = colnames(all.returns))
@@ -369,6 +376,11 @@ ___________________________________________________________________
 
   #print("Optimal weights")
   weight_test <- eff.frontier$frontier[optimal.port.name,(1:n.assets)+3]
+    }else{
+    load('~/mean_sharpe.rda')
+      load('~/sd_sharpe.rda')
+      load('~/weight_test.rda')
+  }
 
   }
   #########################################
@@ -655,6 +667,9 @@ ___________________________________________________________________
     Weights_All[14,k+1]=data.frame(colnames(Weight_ANNt_Sharpe))[k,]
     Weights_All[15,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
   }
+  save(mean_sharpe,file="~/mean_sharpe.rda")
+  save(sd_sharpe,file="~/sd_sharpe.rda")
+  save(weight_test,file="~/weight_test.rda")
   save(Initial_Date_Testing,file='~/Initial_Date_Testing.rda')
   save(Classificacao_MFractal, file='~/Classificacao_MFractal.rda')
   save(Rf,file='~/Rf.rda')
