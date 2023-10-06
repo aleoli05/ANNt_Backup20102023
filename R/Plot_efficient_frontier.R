@@ -31,6 +31,11 @@ load('~/GMV_sd.rda')
 Inicio_data = Initial_Analysis_Date
 Fim_data = Final_Analysis_Date
 
+ if (ncol(Base_Palomar)>10){
+  GMV_Return=1
+  GMV_sd=1
+}
+
 sd_sharpe = sd(as.data.frame(Comparativo_RETORNOS)$SHARPE)
 mean_sharpe = mean(as.data.frame(Comparativo_RETORNOS)$SHARPE)
 attach(as.data.frame(Base_Palomar))
