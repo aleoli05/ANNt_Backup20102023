@@ -26,6 +26,9 @@
 ANNt_Oliveira_Ceretta <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, N_Assets){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
 #RM <-c('^GSPC') #RM the S&P500
+
+Signal_Sharpe=0
+save(Signal_Sharpe, file='~/Signal_Sharpe.rda')
 Initial_Date <-Initial_Date
 x0 = Final_Date
 save(x0, file='~/x0.rda')
