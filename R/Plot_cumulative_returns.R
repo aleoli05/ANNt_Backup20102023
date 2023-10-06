@@ -64,7 +64,7 @@ if(nrow(Comparativo)>200) {Eixo_X2 = c(1, 100, 200, 300, 400, 500, 600)
 #} else{Eixo_X2 = c(1, 50, 100, 149)}
 } else{
   if(nrow(Comparativo)>100) {Eixo_X2 = c(1, 50, 100, 149, 200, 250, 300)
-  }else{Eixo_C2 = c(1,50,100)}}
+  }else{Eixo_X2 = c(1,50,100)}}
 Eixo_X3 = rownames(Comparativo2[Eixo_X2,])
 Inicio_data = rownames(Comparativo2[1,])
 Fim_data = rownames(Comparativo2[nrow(Comparativo2),])
