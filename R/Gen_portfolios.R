@@ -306,7 +306,7 @@ ___________________________________________________________________
   Contador=Contador-10
   #}
   Remover= nrow(all.returns)-Contador
-  if(ncol(all.returns)>100){
+  if(ncol(all.returns)>10){
     all.returns <- all.returns[1:(nrow(all.returns)-Remover),]
   }
   ##############################################################################
