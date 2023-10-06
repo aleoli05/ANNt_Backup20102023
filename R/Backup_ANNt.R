@@ -38,6 +38,10 @@ Backup_ANNt <- function(){
   load('~/Rf.rda')
   load('~/Until_Date.rda')
   load('~/N_Assets.rda')
+  load("~/Signal_Sharpe.rda")
+  if(Signal_Sharpe==1){
+    RM = "SHARPE"
+  }
   if(Final_Date==''){
     load('~/scenario.set.rda')
     Final_Date = rownames(as.data.frame(scenario.set)[nrow(scenario.set),])
