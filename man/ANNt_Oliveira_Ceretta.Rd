@@ -52,7 +52,7 @@ Final_Date_Training <- c('2022-12-29')
 Final_Date <-c('')
 Periodicity <- c('daily')
 Hidden <- 5
-Stepmax <- 2500
+Stepmax <- 7500
 N_Assets <- 3
-ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,2500,3)
+ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,3)
 }

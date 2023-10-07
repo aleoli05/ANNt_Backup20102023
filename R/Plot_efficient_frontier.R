@@ -27,6 +27,8 @@ load('~/Initial_Analysis_Date.rda')
 load('~/Final_Analysis_Date.rda')
 load('~/GMV_Return.rda')
 load('~/GMV_sd.rda')
+load('~/RM.rda')
+
 
 Inicio_data = Initial_Analysis_Date
 Fim_data = Final_Analysis_Date
@@ -308,7 +310,7 @@ text(x=GMV_sd, y=GMV_Return,
 legend(x="topright",
        #legend=c(colnames(as.data.frame(Comparativo_RETORNOS)[1]), "MF_SHARPE", "ANNt_EQ" , "ANNt_MKW","ANNt_SHARPE",
        #        "MARKOWITZ","SHARPE"),
-       legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+       legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
                   "ANNt_MKW", "ANNt_SHARPE", "GMV"),
        #text.col = c("black","red","blue","green","darkgreen", "brown", "darkblue"),
@@ -529,7 +531,7 @@ text(x=GMV_sd, y=GMV_Return,
 legend(x="topright",
        #legend=c(colnames(as.data.frame(Comparativo_RETORNOS)[1]), "MF_SHARPE", "ANNt_EQ" , "ANNt_MKW","ANNt_SHARPE",
        #        "MARKOWITZ","SHARPE"),
-       legend = c("SP500", "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+       legend = c(RM, "MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
                   "ANNt_Eq",
                   "ANNt_MKW", "ANNt_SHARPE", "GMV"),
        font=2,
