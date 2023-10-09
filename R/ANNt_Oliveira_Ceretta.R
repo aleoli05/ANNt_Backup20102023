@@ -1,5 +1,5 @@
 #'ANNt_Oliveira_Ceretta
-#'Command that realize all operations of the package and save all in a specific past into user past
+#'Command that realize all operations of the package (except Out-of-sample) and save all in a specific past into user past
 #'@param Tickers Name of the assets or "Current_SP500_Tickers" for all S&P 500 assets
 #'@param RM Proxy of the market
 #'@param Rf Risk free rate

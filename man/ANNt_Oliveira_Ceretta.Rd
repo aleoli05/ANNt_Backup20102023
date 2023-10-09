@@ -3,7 +3,7 @@
 \name{ANNt_Oliveira_Ceretta}
 \alias{ANNt_Oliveira_Ceretta}
 \title{ANNt_Oliveira_Ceretta
-Command that realize all operations of the package and save all in a specific past into user past}
+Command that realize all operations of the package (except Out-of-sample) and save all in a specific past into user past}
 \usage{
 ANNt_Oliveira_Ceretta(
   Tickers,
@@ -41,7 +41,7 @@ ANNt_Oliveira_Ceretta(
 }
 \description{
 ANNt_Oliveira_Ceretta
-Command that realize all operations of the package and save all in a specific past into user past
+Command that realize all operations of the package (except Out-of-sample) and save all in a specific past into user past
 }
 \examples{
 Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
