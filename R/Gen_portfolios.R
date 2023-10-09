@@ -184,14 +184,23 @@ ___________________________________________________________________
     dplyr::select(which((colnames(scenario.set) %in% Carteira_MFractal)))
   C_MFractal = C_MFractal[Datas1Predict,]
   Pesos_MFractal = c(rep(1/n_assets,n_assets))
-  Ret_C_MFractal = as.matrix(C_MFractal) %*% Pesos_MFractal
+  Ret_C_MFractal_EQ = as.matrix(C_MFractal) %*% Pesos_MFractal
+
+  # Weight extract
+  C_Pesos_MFractal = data.frame(colnames(C_MFractal),Pesos_MFractal)
+  Pesos_MFractal_1 <- C_Pesos_MFractal[C_Pesos_MFractal[,2]>0,]
+  Pesos_MFractal_2<- t(matrix(Pesos_MFractal_1[,2]))
+  colnames(Pesos_MFractal_2) <- Pesos_MFractal_1[,1]
+  rownames(Pesos_MFractal_2)<-'Weight'
+  #print(paste('Weights of the MF-EQ Portfolio:'))
+  #   print(Pesos_MFractal_2)
 
   # Carteira de Markovitz de Minima Variância M_Fractal
   Pesos_MFractal_Mkv <- round(tseries::portfolio.optim(as.matrix(C_MFractal))$pw, 4)
   Ret_C_MFractal = as.matrix(C_MFractal)%*% Pesos_MFractal_Mkv
 
   # Weight extract
-  C_Pesos_MFractal_Mkv = data.frame(Carteira_MFractal,Pesos_MFractal_Mkv)
+  C_Pesos_MFractal_Mkv = data.frame(colnames(C_MFractal),Pesos_MFractal_Mkv)
   Pesos_MFractal_Mkv1 <- C_Pesos_MFractal_Mkv[C_Pesos_MFractal_Mkv[,2]>0,]
   Pesos_MFractal_Mkv2<- t(matrix(Pesos_MFractal_Mkv1[,2]))
   colnames(Pesos_MFractal_Mkv2) <- Pesos_MFractal_Mkv1[,1]
@@ -563,18 +572,19 @@ ___________________________________________________________________
 
   # Geração da Matriz de comparação dos Retornos
   RM <- colnames(scenario.set[1])
-  Comparativo_RETORNOS = matrix(nrow=length(Ret_C_MFractal), ncol=8)
+  Comparativo_RETORNOS = matrix(nrow=length(Ret_C_MFractal), ncol=9)
   Comparativo_RETORNOS[,1] = PosCovidSP500
   Comparativo_RETORNOS[,2] = RetornoMedioMArkovitz
   Comparativo_RETORNOS[,3] = RetornoMedioMaxIS
-  Comparativo_RETORNOS[,4] = Ret_C_MFractal
-  Comparativo_RETORNOS[,5] = RetornoMedioMaxIS_MFractal
-  Comparativo_RETORNOS[,6] = Media_C_Net_T_Comparativa
-  Comparativo_RETORNOS[,7] = Ret_Medio_RNA_T_Mkv
-  Comparativo_RETORNOS[,8] = RetornoMedioMaxIS_RNAt
+  Comparativo_RETORNOS[,4] = Ret_C_MFractal_EQ
+  Comparativo_RETORNOS[,5] = Ret_C_MFractal
+  Comparativo_RETORNOS[,6] = RetornoMedioMaxIS_MFractal
+  Comparativo_RETORNOS[,7] = Media_C_Net_T_Comparativa
+  Comparativo_RETORNOS[,8] = Ret_Medio_RNA_T_Mkv
+  Comparativo_RETORNOS[,9] = RetornoMedioMaxIS_RNAt
 
   #Comparativo_RETORNOS[,6] = RetornoMedioMean_Variance_Mkv
-  colnames(Comparativo_RETORNOS)= c(RM,"MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+  colnames(Comparativo_RETORNOS)= c(RM,"MARKOWITZ", "SHARPE", "MF_EQ", "MF_MKW", "MF_SHARPE",
                                     "ANNt_EQ", "ANNt_MKW", "ANNt_SHARPE")
   rownames(Comparativo_RETORNOS) = rownames(PosCovidSP500)
   Datas_Comparativo_RETORNOS = rownames(as.data.frame(Comparativo_RETORNOS))
@@ -587,15 +597,16 @@ ___________________________________________________________________
   options(warn=-1)
   #
   # Geração da Matriz de comparação dos Retornos Acumulados
-  Comparativo = matrix(nrow=length(Ret_C_MFractal), ncol=8)
+  Comparativo = matrix(nrow=length(Ret_C_MFractal), ncol=9)
   Comparativo[1,1] = PosCovidSP500[1,]
   Comparativo[1,2] = RetornoMedioMArkovitz[1,]
   Comparativo[1,3] = RetornoMedioMaxIS[1,]
-  Comparativo[1,4] = Ret_C_MFractal[1,]
-  Comparativo[1,5] = RetornoMedioMaxIS_MFractal[1,]
-  Comparativo[1,6] = Media_C_Net_T_Comparativa[1,]
-  Comparativo[1,7] = Ret_Medio_RNA_T_Mkv [1,]
-  Comparativo[1,8] = RetornoMedioMaxIS_RNAt[1,]
+  Comparativo[1,4] = Ret_C_MFractal_EQ[1,]
+  Comparativo[1,5] = Ret_C_MFractal[1,]
+  Comparativo[1,6] = RetornoMedioMaxIS_MFractal[1,]
+  Comparativo[1,7] = Media_C_Net_T_Comparativa[1,]
+  Comparativo[1,8] = Ret_Medio_RNA_T_Mkv [1,]
+  Comparativo[1,9] = RetornoMedioMaxIS_RNAt[1,]
 
 
   for(i in 2:length(PosCovidSP500)) {
@@ -605,18 +616,20 @@ ___________________________________________________________________
     Comparativo[i,3] = (as.matrix(Comparativo[i-1,3])+1)*
       (as.matrix(RetornoMedioMaxIS[i,])+1)-1
     Comparativo[i,4] = (as.matrix(Comparativo[i-1,4])+1)*
+      (as.matrix(Ret_C_MFractal_EQ[i,])+1)-1
+    Comparativo[i,5] = (as.matrix(Comparativo[i-1,4])+1)*
       (as.matrix(Ret_C_MFractal[i,])+1)-1
-    Comparativo[i,5] = (as.matrix(Comparativo[i-1,5])+1)*
+    Comparativo[i,6] = (as.matrix(Comparativo[i-1,5])+1)*
       (as.matrix(RetornoMedioMaxIS_MFractal[i,])+1)-1
-    Comparativo[i,6] = (as.matrix(Comparativo[i-1,6])+1)*
+    Comparativo[i,7] = (as.matrix(Comparativo[i-1,6])+1)*
       (as.matrix(Media_C_Net_T_Comparativa[i,])+1)-1
-    Comparativo[i,7] = (as.matrix(Comparativo[i-1,7])+1)*
+    Comparativo[i,8] = (as.matrix(Comparativo[i-1,7])+1)*
       (as.matrix(Ret_Medio_RNA_T_Mkv[i,])+1)-1
-    Comparativo[i,8] = (as.matrix(Comparativo[i-1,8])+1)*
+    Comparativo[i,9] = (as.matrix(Comparativo[i-1,8])+1)*
       (as.matrix(RetornoMedioMaxIS_RNAt[i,])+1)-1
   }
 
-  colnames(Comparativo)= c(RM,"MARKOWITZ", "SHARPE", "MF_MKW", "MF_SHARPE",
+  colnames(Comparativo)= c(RM,"MARKOWITZ", "SHARPE", "MF_MF", "MF_MKW", "MF_SHARPE",
                            "ANNt_EQ", "ANNt_MKW", "ANNt_SHARPE")
   rownames(Comparativo) = rownames(as.data.frame(PosCovidSP500))
 
@@ -637,35 +650,40 @@ ___________________________________________________________________
     Weights_All[2,k+1]=data.frame(colnames(Pesos_C_Markov2))[k,]
     Weights_All[3,k+1]=round(data.frame(Pesos_C_Markov2)[k],2)
   }
-  Weights_All [4,1] <- 'MF_MKW'
-  for(k in (1:ncol(Pesos_MFractal_Mkv2))){
-    Weights_All[4,k+1]=data.frame(colnames(Pesos_MFractal_Mkv2))[k,]
-    Weights_All[5,k+1]=round(data.frame(Pesos_MFractal_Mkv2)[k],2)
+  Weights_All [4,1] <- 'MF_EQ'
+  for(k in (1:ncol(Pesos_MFractal_2))){
+    Weights_All[4,k+1]=data.frame(colnames(Pesos_MFractal_2))[k,]
+    Weights_All[5,k+1]=round(data.frame(Pesos_MFractal_2)[k],2)
   }
-  Weights_All [6,1] <- 'ANNt_EQ'
-  for(k in (1:ncol(Pesos_ANNt_Eq2))){
-    Weights_All[6,k+1]=data.frame(colnames(Pesos_ANNt_Eq2))[k,]
-    Weights_All[7,k+1]=round(data.frame(Pesos_ANNt_Eq2)[k],2)
+  Weights_All [6,1] <- 'MF_MKW'
+  for(k in (1:ncol(Pesos_MFractal_Mkv2))){
+    Weights_All[6,k+1]=data.frame(colnames(Pesos_MFractal_Mkv2))[k,]
+    Weights_All[7,k+1]=round(data.frame(Pesos_MFractal_Mkv2)[k],2)
   }
   Weights_All [8,1] <- 'ANNt_EQ'
+  for(k in (1:ncol(Pesos_ANNt_Eq2))){
+    Weights_All[8,k+1]=data.frame(colnames(Pesos_ANNt_Eq2))[k,]
+    Weights_All[9,k+1]=round(data.frame(Pesos_ANNt_Eq2)[k],2)
+  }
+  Weights_All [10,1] <- 'ANNt_EQ'
   for(k in (1:ncol(Pesos_ANNt_Mkv2))){
-    Weights_All[8,k+1]=data.frame(colnames(Pesos_ANNt_Mkv2))[k,]
-    Weights_All[9,k+1]=round(data.frame(Pesos_ANNt_Mkv2)[k],2)
+    Weights_All[10,k+1]=data.frame(colnames(Pesos_ANNt_Mkv2))[k,]
+    Weights_All[11,k+1]=round(data.frame(Pesos_ANNt_Mkv2)[k],2)
   }
-  Weights_All [10,1] <- 'SHARPE'
+  Weights_All [12,1] <- 'SHARPE'
   for(k in (1:ncol(Weight_Sharpe_1))){
-    Weights_All[10,k+1]=data.frame(colnames(Weight_Sharpe_1))[k,]
-    Weights_All[11,k+1]=round(data.frame(Weight_Sharpe_1)[k],2)
+    Weights_All[12,k+1]=data.frame(colnames(Weight_Sharpe_1))[k,]
+    Weights_All[13,k+1]=round(data.frame(Weight_Sharpe_1)[k],2)
   }
-  Weights_All [12,1] <- 'MF_SHARPE'
+  Weights_All [14,1] <- 'MF_SHARPE'
   for(k in (1:ncol(Weight_Sharpe_MF))){
-    Weights_All[12,k+1]=data.frame(colnames(Weight_Sharpe_MF))[k,]
-    Weights_All[13,k+1]=round(data.frame(Weight_Sharpe_MF)[k],2)
+    Weights_All[14,k+1]=data.frame(colnames(Weight_Sharpe_MF))[k,]
+    Weights_All[15,k+1]=round(data.frame(Weight_Sharpe_MF)[k],2)
   }
-  Weights_All [14,1] <- 'ANNt_SHARPE'
+  Weights_All [16,1] <- 'ANNt_SHARPE'
   for(k in (1:ncol(Weight_ANNt_Sharpe))){
-    Weights_All[14,k+1]=data.frame(colnames(Weight_ANNt_Sharpe))[k,]
-    Weights_All[15,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
+    Weights_All[16,k+1]=data.frame(colnames(Weight_ANNt_Sharpe))[k,]
+    Weights_All[17,k+1]=round(data.frame(Weight_ANNt_Sharpe)[k],2)
   }
   save(mean_sharpe,file="~/mean_sharpe.rda")
   save(sd_sharpe,file="~/sd_sharpe.rda")
@@ -680,6 +698,16 @@ ___________________________________________________________________
   save(Final_Date_Testing,file='~/Final_Date_Testing.rda')
   save(GMV_Return,file='~/GMV_Return.rda')
   save(GMV_sd,file='~/GMV_sd.rda')
+
+  #### Weights
+  save(Pesos_MFractal_2,file='~/Pesos_MFractal_2.rda')
+  save(Pesos_MFractal_Mkv2,file='~/Pesos_MFractal_Mkv2.rda')
+  save(Pesos_C_Markov2,file='~/Pesos_C_Markov2.rda')
+  save(Pesos_ANNt_Eq2,file='~/Pesos_ANNt_Eq2.rda')
+  save(Pesos_ANNt_Mkv2,file='~/Pesos_ANNt_Mkv2.rda')
+  save(Weight_Sharpe_1,file='~/Weight_Sharpe_1.rda')
+  save(Weight_Sharpe_MF,file='~/Weight_Sharpe_MF.rda')
+  save(Weight_ANNt_Sharpe,file='~/Weight_ANNt_Sharpe.rda')
 
   write_xlsx(as.data.frame(Weights_All), "~/Weights_All.xlsx")
 
