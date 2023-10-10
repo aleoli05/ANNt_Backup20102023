@@ -17,3 +17,9 @@ For more details see: Oliveira, A. S., Ceretta, P. S., & Albrecht, P. (2023). Pe
 Data_OCA2023()
 
 }
+\references{
+Oliveira, A. S., Ceretta, P. S., & Albrecht, P. (2023). Performance comparison of multifractal techniques and artificial neural networks in the construction of investment portfolios. Finance Research Letters, 55, 103814.
+}
+\author{
+Alexandre Silva de Oliveira
+}

@@ -11,6 +11,8 @@
 #'@param Hidden Number of hidden neurons. In the study use '' to form a square input x hidden matrix of neurons
 #'@param Stepmax Number of replications per asset to train the ANN. In the study use 10000
 #'@param N_Assets Limit of asset numbers in the portfolio: Use 5, 10, 15 or 20 to replicate the study
+#'@author Alexandre Silva de Oliveira
+#'@references Oliveira, A. S., Ceretta, P. S., & Albrecht, P. (2023). Performance comparison of multifractal techniques and artificial neural networks in the construction of investment portfolios. Finance Research Letters, 55, 103814.
 #'@examples
 #'Tickers <-'Current_SP500_Tickers'
 #'RM <-c('^GSPC') #RM the S&P500
@@ -53,7 +55,7 @@ ANNt_OCA2023 <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Fin
   Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily')
   Final_Date_Training <- Final_Date_Training
   ANNt_order ('', '', '2022-07-12', 'hidden', 'stepmax')
-  Gen_portfolios('n_Assets',Initial_Date_Testing,'2022-07-12',0)
+  Gen_portfolios('n_Assets',Initial_Date_Testing,'2022-07-12',0,'T8')
   Portfolio_backtesting()
   Plot_Cumulative_Returns('')
   #Gen_efficient_frontier('','')

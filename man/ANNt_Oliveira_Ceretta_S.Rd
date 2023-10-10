@@ -15,6 +15,7 @@ ANNt_Oliveira_Ceretta_S(
   Periodicity,
   Hidden,
   Stepmax,
+  Type_ANNt,
   N_Assets
 )
 }
@@ -35,6 +36,8 @@ ANNt_Oliveira_Ceretta_S(
 
 \item{Stepmax}{Number of replications per asset to train the ANN. For a good performance, use 7500}
 
+\item{Type_ANNt}{Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test}
+
 \item{N_Assets}{Limit of asset numbers in the portfolio}
 
 \item{Initial_Date_Training}{Training series start Date}
@@ -52,6 +55,7 @@ Final_Date <-c('')
 Periodicity <- c('daily')
 Hidden <- 5
 Stepmax <- 7500
+Type_ANNt <- 'T8'
 N_Assets <- 3
-ANNt_Oliveira_Ceretta_S(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,3)
+ANNt_Oliveira_Ceretta_S(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,'T8',3)
 }

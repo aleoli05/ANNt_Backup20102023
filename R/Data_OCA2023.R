@@ -6,6 +6,8 @@
 #'@examples
 #'Data_OCA2023()
 #'
+#'@author Alexandre Silva de Oliveira
+#'@references Oliveira, A. S., Ceretta, P. S., & Albrecht, P. (2023). Performance comparison of multifractal techniques and artificial neural networks in the construction of investment portfolios. Finance Research Letters, 55, 103814.
 #'@export
 Data_OCA2023<-function(){
   library(readxl)

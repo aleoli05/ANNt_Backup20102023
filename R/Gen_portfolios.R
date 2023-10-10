@@ -4,22 +4,54 @@
 #' @param Initial_Date_Testing Initial Date of Test Series
 #' @param Final_Date_Testing Final Date Test Series, if '' is the system date
 #' @param Rf Risk free rate
-#'
+#' @param Type_ANNt Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test
+#' @author Alexandre Silva de Oliveira
 #' @examples
 #' N_Assets <- 3
 #' Initial_Date_Testing <- c('2023-01-03')
 #' Final_Date_Testing <- c('')
 #' Rf <- 0
-#'
+#' Type_ANNt <- 'T8'
 #' # Generate assets portfolio (maximum N assets specified)
-#' Gen_portfolios(3,'2023-01-03','',0)
+#' Gen_portfolios(3,'2023-01-03','',0,'T8')
 #'
-Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf){
+Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf, Type_ANNt){
+if(Type_ANNt=='T1'){
+  load('~/T1.rda')
+  Type_ANNt=T1
+} else {
+  if(Type_ANNt=='T2'){
+  load('~/T2.rda')
+    Type_ANNt=T2
+  } else{
+  if(Type_ANNt=='T3'){
+  load('~/T3.rda')
+    Type_ANNt=T3
+  } else{
+  if(Type_ANNt=='T4'){
+  load('~/T4.rda')
+    Type_ANNt=T4
+  } else{
+  if(Type_ANNt=='T5'){
+  load('~/T5.rda')
+    Type_ANNt=T5
+  } else{
+  if(Type_ANNt=='T6'){
+  load('~/T6.rda')
+    Type_ANNt=T6
+  } else{
+  if(Type_ANNt=='T7'){
+  load('~/T7.rda')
+    Type_ANNt=T7
+  } else{
+  if(Type_ANNt=='T8'){
+  load("~/T8.rda") # Carrega objeto scenario.set
+    Type_ANNt=T8
+    }}}}}}}}
 
-
+  save(Type_ANNt, file='~/Type_ANNt.rda')
   # Duração do processamento 1720/length(dados)=1.2 min)
   load("~/scenario.set.rda") # Carrega objeto scenario.set
-  load("~/T8.rda") # Carrega objeto scenario.set
   load("~/I_dataPredict.rda") # Carrega objeto scenario.set
   load("~/F_dataPredict.rda") # Carrega objeto scenario.set
   load("~/Initial_Date_Testing.rda")
@@ -243,7 +275,7 @@ ___________________________________________________________________
   print(paste('[2] Weights of the MF_MKW Portfolio:'))
   print(Pesos_MFractal_Mkv2)
 
-  CarteiraComparativa = colnames(T8[1:n_assets])
+  CarteiraComparativa = colnames(Type_ANNt[1:n_assets])
   C_Net_T_comparativa = as.data.frame(scenario.set) %>%
     dplyr::select(which((colnames(scenario.set) %in% CarteiraComparativa)))
   C_Net_T_comparativa = C_Net_T_comparativa[Datas1Predict,]
@@ -617,15 +649,15 @@ ___________________________________________________________________
       (as.matrix(RetornoMedioMaxIS[i,])+1)-1
     Comparativo[i,4] = (as.matrix(Comparativo[i-1,4])+1)*
       (as.matrix(Ret_C_MFractal_EQ[i,])+1)-1
-    Comparativo[i,5] = (as.matrix(Comparativo[i-1,4])+1)*
+    Comparativo[i,5] = (as.matrix(Comparativo[i-1,5])+1)*
       (as.matrix(Ret_C_MFractal[i,])+1)-1
-    Comparativo[i,6] = (as.matrix(Comparativo[i-1,5])+1)*
+    Comparativo[i,6] = (as.matrix(Comparativo[i-1,6])+1)*
       (as.matrix(RetornoMedioMaxIS_MFractal[i,])+1)-1
-    Comparativo[i,7] = (as.matrix(Comparativo[i-1,6])+1)*
+    Comparativo[i,7] = (as.matrix(Comparativo[i-1,7])+1)*
       (as.matrix(Media_C_Net_T_Comparativa[i,])+1)-1
-    Comparativo[i,8] = (as.matrix(Comparativo[i-1,7])+1)*
+    Comparativo[i,8] = (as.matrix(Comparativo[i-1,8])+1)*
       (as.matrix(Ret_Medio_RNA_T_Mkv[i,])+1)-1
-    Comparativo[i,9] = (as.matrix(Comparativo[i-1,8])+1)*
+    Comparativo[i,9] = (as.matrix(Comparativo[i-1,9])+1)*
       (as.matrix(RetornoMedioMaxIS_RNAt[i,])+1)-1
   }
 
@@ -665,7 +697,7 @@ ___________________________________________________________________
     Weights_All[8,k+1]=data.frame(colnames(Pesos_ANNt_Eq2))[k,]
     Weights_All[9,k+1]=round(data.frame(Pesos_ANNt_Eq2)[k],2)
   }
-  Weights_All [10,1] <- 'ANNt_EQ'
+  Weights_All [10,1] <- 'ANNt_MKW'
   for(k in (1:ncol(Pesos_ANNt_Mkv2))){
     Weights_All[10,k+1]=data.frame(colnames(Pesos_ANNt_Mkv2))[k,]
     Weights_All[11,k+1]=round(data.frame(Pesos_ANNt_Mkv2)[k],2)

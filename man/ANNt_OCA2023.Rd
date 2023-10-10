@@ -54,3 +54,9 @@ Stepmax <- 10000
 N_Assets <- 5
 ANNt:::ANNt_OCA2023('Current_SP500_Tickers', '^GSPC', 0.0311, '2018-01-11', '2020-01-17', '', 'daily','',10000,5)
 }
+\references{
+Oliveira, A. S., Ceretta, P. S., & Albrecht, P. (2023). Performance comparison of multifractal techniques and artificial neural networks in the construction of investment portfolios. Finance Research Letters, 55, 103814.
+}
+\author{
+Alexandre Silva de Oliveira
+}

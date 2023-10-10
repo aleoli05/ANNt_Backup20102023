@@ -14,7 +14,7 @@ load('~/Rf.rda')
 load('~/N_Assets.rda')
 load('~/max_frame.rda')
 load('~/fronteiraEficiente.rda')
-load('~/T8.rda')
+load('~/Type_ANNt.rda')
 load('~/Mkw.rda')
 load('~/RNAt.rda')
 load('~/MF.rda')
@@ -47,7 +47,7 @@ cores = NULL
 for (i in 1:ncol(Base_Palomar)){
   cores[i] = "grey"}
 MF_DFA = as.data.frame(Classificacao_MFractal)[1:N_Assets]
-ANNt = T8[,1:N_Assets]
+ANNt = Type_ANNt[,1:N_Assets]
 max_frame = as.data.frame(max_frame)
 Sharpe_ativos = t(filter(max_frame,max_frame>0))
 Base_Palomar_frame = as.data.frame(Base_Palomar)
@@ -69,7 +69,7 @@ for(i in 1:ncol(Base_Palomar)){
 #for (i in 1:ncol(Base_Palomar)){
 #  cores[i] = "grey"}
 ##MF_DFA = Classificacao_MFractal[1:5]
-#ANNt = T8[,1:N_Assets]
+#ANNt = Type_ANNt[,1:N_Assets]
 ##max_frame = as.data.frame(maxSR.weight.rp)
 #max_frame = as.data.frame(weight_Sharpe)
 #assets_max_frame <- str_replace(rownames(max_frame),"w.","")

@@ -7,6 +7,7 @@
 #' @param Final_Date_Training Series end Date (If '' is the System Date)
 #' @param Hidden Number of hidden neurons (If '' is the length series)
 #' @param Stepmax Number of replications per asset to train the ANN
+#' @author Alexandre Silva de Oliveira
 
 #' @examples
 #' Initial_Date_Training <-c('2018-01-11')

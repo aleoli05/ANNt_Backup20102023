@@ -36,3 +36,6 @@ ANNt_order ('2018-01-11','2022-12-29','', 5, 2500)
 # Estimated processing time 30 minutes per asset
 
 }
+\author{
+Alexandre Silva de Oliveira
+}
