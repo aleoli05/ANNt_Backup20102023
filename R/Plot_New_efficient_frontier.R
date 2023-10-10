@@ -43,8 +43,8 @@ attach(as.data.frame(Comparativo_RETORNOS))
 
 x1 = (sd_sharpe+0.05)/9
 xn = NULL
-xn[1]=0
-for (i in 2:10){xn[i] = x1*i}
+xn[1]=-0.02
+for (i in 2:20){xn[i] = x1*i}
 yn= (mean_sharpe-((1+Rf)^(1/252)-1))/sd_sharpe*xn +((1+Rf)^(1/252)-1)
 
 ########################################################################################
