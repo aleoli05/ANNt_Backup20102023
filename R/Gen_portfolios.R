@@ -4,7 +4,15 @@
 #' @param Initial_Date_Testing Initial Date of Test Series
 #' @param Final_Date_Testing Final Date Test Series, if '' is the system date
 #' @param Rf Risk free rate
-#' @param Type_ANNt Select type ANNt: "T1"= NNet_Signal_Traning; "T2"= NNet_t_Training; "T3"= MC_Signal_Training; "T4"= MC_t_Training; "T5"= NNet_Signal_Test; "T6"= NNet_t_Test; "T7"= MC_Signal_Test; "T8"= Type_ANNt: MC_t_Test
+#' @param Type_ANNt Select type ANNt:
+#' "T1"= NNet_Signal_Traning;
+#' "T2"= NNet_t_Training;
+#' "T3"= MC_Signal_Training;
+#' "T4"= MC_t_Training;
+#' "T5"= NNet_Signal_Test;
+#' "T6"= NNet_t_Test;
+#' "T7"= MC_Signal_Test;
+#' "T8"= Type_ANNt: MC_t_Test
 #' @author Alexandre Silva de Oliveira
 #' @examples
 #' N_Assets <- 3
@@ -19,34 +27,42 @@ Gen_portfolios <-function(N_Assets, Initial_Date_Testing, Final_Date_Testing, Rf
 if(Type_ANNt=='T1'){
   load('~/T1.rda')
   Type_ANNt=T1
+  message("T1= Type_ANNt: NNet_Signal_Traning - Assets with the highest probability obtained with the NeuralNet Package's ANN and Signal probability in the training sample is implemented")
 } else {
   if(Type_ANNt=='T2'){
   load('~/T2.rda')
     Type_ANNt=T2
+    message("T2= Type_ANNt: NNet_t_Training - Assets with the highest probability obtained with the NeuralNet Package´s ANN and Student's t probability distribution  in the training sample is implemented")
   } else{
   if(Type_ANNt=='T3'){
   load('~/T3.rda')
     Type_ANNt=T3
+    message("T3= Type_ANNt: MC_Signal_Training - Assets with the highest probability obtained with the manually programmed ANN and Signal probability in the training sample is implemented")
   } else{
   if(Type_ANNt=='T4'){
   load('~/T4.rda')
     Type_ANNt=T4
+    message("T4= Type_ANNt: MC_t_Training - Assets with the highest probability obtained with the manually programmed ANN and Signal probability in the test sample is implemented")
   } else{
   if(Type_ANNt=='T5'){
   load('~/T5.rda')
     Type_ANNt=T5
+    message("T5= Type_ANNt: NNet_Signal_Test - Assets with the highest probability obtained with the NeuralNet Package's ANN and Signal probability in the test sample is implemented")
   } else{
   if(Type_ANNt=='T6'){
   load('~/T6.rda')
     Type_ANNt=T6
+    message("T6= Type_ANNt: NNet_t_Test - Assets with the highest probability obtained with the NeuralNet Package´s ANN and Student's t probability distribution  in the test sample is implemented")
   } else{
   if(Type_ANNt=='T7'){
   load('~/T7.rda')
     Type_ANNt=T7
+    message("T7= Type_ANNt: MC_Signal_Test - Assets with the highest probability obtained with the manually programmed ANN and Signal probability in the test sample is implemented")
   } else{
   if(Type_ANNt=='T8'){
   load("~/T8.rda") # Carrega objeto scenario.set
     Type_ANNt=T8
+    message("T8= Type_ANNt: MC_t_Test - Assets with the highest probability obtained with the manually programmed ANN and Student's t probability distribution  in the test sample is implemented")
     }}}}}}}}
 
   save(Type_ANNt, file='~/Type_ANNt.rda')
@@ -96,6 +112,11 @@ ___________________________________________________________________
     Final_Date_Testing=rownames(dados2[nrow(dados2),])
     #Final_Date_Testing=Sys.Date()
   }
+  if(class(which(rownames(dados2)==Final_Date_Testing))=='integer'){
+    Final_Date_Testing=rownames(dados2[nrow(dados2),])
+    #Final_Date_Testing=Sys.Date()
+  }
+
 
   Rf=Rf/100
 
@@ -385,7 +406,14 @@ ___________________________________________________________________
 
   } else{
   #######################Verify if ANNt_Oliveira_Ceretta_S was ativate###########
-    if(Signal_Sharpe==0){
+    load('~/weight_test.rda')
+     if(Signal_Sharpe==0 | length(weight_test)!=ncol(all.returns)){
+
+      n_testing=which(rownames(dados2)==Final_Date_Testing)-which(rownames(dados2)==Initial_Date_Testing)
+      if(n_testing<ncol(dados2)){
+        stop("You need to specify a test period greater than the number of assets for the Sharpe portfolio to have a solution!")
+      }
+
   ####### set up portfolio with objetive and constraints
   n.assets <- length(colnames(all.returns))
   port.sec <- portfolio.spec(assets = colnames(all.returns))
@@ -425,7 +453,6 @@ ___________________________________________________________________
 
   }
   #########################################
-
 
   weight_test <- round(weight_test,4)
   weight_Sharpe= weight_test[which(weight_test !=0)]
