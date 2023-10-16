@@ -21,8 +21,9 @@
 #'Periodicity <- c('daily')
 #'Hidden <- 5
 #'Stepmax <- 7500
+#'Type_ANNt <- 'T8'
 #'N_Assets <- 3
-#'ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,3)
+#'ANNt_Oliveira_Ceretta(c('AAPL','XOM','TSLA','KO', 'F'), '^GSPC', 0, '2018-01-03', '2022-12-29', '', 'daily',5,7500,'T8',3)
 #'@export
 ANNt_Oliveira_Ceretta <- function(Tickers, RM, Rf, Initial_Date, Final_Date_Training, Final_Date, Periodicity, Hidden, Stepmax, Type_ANNt, N_Assets){
 #Tickers <-c('AAPL','XOM','TSLA','KO', 'F')
@@ -56,7 +57,7 @@ Assets_series (Tickers,RM, Initial_Date, Final_Date,'daily')
 Final_Date_Training <- Final_Date_Training
 ANNt_order ('', '', '', 'hidden', 'stepmax')
 Gen_portfolios('n_Assets',Initial_Date_Testing,'',0, Type_ANNt)
-Portfolio_backtesting()
+Portfolio_backtesting('','')
 Plot_Cumulative_Returns('')
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()

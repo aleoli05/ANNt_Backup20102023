@@ -252,7 +252,7 @@ scenario.set=Portfolio_with_RM_Original
 save(scenario.set, file="~/scenario.set.rda")
 
 Gen_portfolios('n_Assets',Initial_Date_Testing,'',0, Type_ANNt)
-Portfolio_backtesting()
+Portfolio_backtesting('','')
 Plot_Cumulative_Returns('')
 Gen_efficient_frontier('','')
 Plot_efficient_frontier()

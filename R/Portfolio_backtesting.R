@@ -1,12 +1,15 @@
 #' Portfolio_backtesting
 #' Realize the portfolio backtest.
 #'
-#' @param () No required parameters
+#' @param Date_Initial_Backtesting Date initial of the backtest
+#' @param Date_Final_Backtesting Date final of the backtest
 #' @examples
-#' Portfolio_backtesting()
+#' Date_Initial_Backtesting =''
+#' Date_Final_Backtesting =''
+#' Portfolio_backtesting('', '')
 #'
 #' @export
-Portfolio_backtesting <- function() {
+Portfolio_backtesting <- function(Date_Initial_Backtesting,Date_Final_Backtesting) {
 
   library(dplyr)
   library(writexl)
@@ -14,6 +17,18 @@ Portfolio_backtesting <- function() {
   load('~/Comparativo_RETORNOS.rda')
   load('~/RM.rda')
   load('~/Rf.rda')
+  Comparativo_RETORNOS=data.frame(Comparativo_RETORNOS)
+  if(Date_Initial_Bactesting==''){
+    Corte1=1
+  } else{
+  Corte1=which(rownames(as.data.frame(Comparativo_RETORNOS))==Date_Initial_Backtesting)
+  }
+  if(Date_Final_Backtesting==''){
+    Corte2=nrow(Comparativo_RETORNOS)
+  } else{
+  Corte2=which(rownames(as.data.frame(Comparativo_RETORNOS))==Date_Final_Backtesting)
+  }
+  Comparativo_RETORNOS=Comparativo_RETORNOS[Corte1:Corte2,]
   attach(as.data.frame(Comparativo_RETORNOS))
 
 

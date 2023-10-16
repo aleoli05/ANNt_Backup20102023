@@ -5,16 +5,20 @@
 \title{Portfolio_backtesting
 Realize the portfolio backtest.}
 \usage{
-Portfolio_backtesting()
+Portfolio_backtesting(Date_Initial_Backtesting, Date_Final_Backtesting)
 }
 \arguments{
-\item{()}{No required parameters}
+\item{Date_Initial_Backtesting}{Date initial of the backtest}
+
+\item{Date_Final_Backtesting}{Date final of the backtest}
 }
 \description{
 Portfolio_backtesting
 Realize the portfolio backtest.
 }
 \examples{
-Portfolio_backtesting()
+Date_Initial_Backtesting =''
+Date_Final_Backtesting =''
+Portfolio_backtesting('', '')
 
 }
