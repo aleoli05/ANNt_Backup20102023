@@ -44,10 +44,34 @@ ANNt_order <- function(Initial_Date_Training, Final_Date_Training, Final_Date_Te
  if(Initial_Date_Training==('')){
    Initial_Date_Training=rownames(as.data.frame(scenario.set)[6,])
  }
+ if(length(which(rownames(as.data.frame(scenario.set))==Initial_Date_Training))==0){
+   while(length(which(rownames(as.data.frame(scenario.set))==Initial_Date_Training))==0){
+     dia=as.Date(Initial_Date_Training)
+     new_day=dia+1
+     Initial_Date_Training = as.character(new_day)
+   }
+ }
+
+ if(length(which(rownames(as.data.frame(scenario.set))==Final_Date_Training))==0){
+   while(length(which(rownames(as.data.frame(scenario.set))==Final_Date_Training))==0){
+     dia=as.Date(Final_Date_Training)
+     new_day=dia-1
+     Final_Date_Training = as.character(new_day)
+   }
+ }
 
  if(Final_Date_Testing==('')){
    Final_Date_Testing=Sys.Date()
  }
+
+ if(length(which(rownames(as.data.frame(scenario.set))==Final_Date_Testing))==0){
+   while(length(which(rownames(as.data.frame(scenario.set))==Final_Date_Testing))==0){
+     dia=as.Date(Final_Date_Testing)
+     new_day=dia-1
+     Final_Date_Testing = as.character(new_day)
+   }
+ }
+
  # y1 is the number of hidden, case the ANNt_Oliveira_Ceretta went used
  if(Hidden=='hidden'){
   load('~/x2.rda')

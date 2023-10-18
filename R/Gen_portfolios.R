@@ -112,13 +112,27 @@ ___________________________________________________________________
     D = which(rownames(scenario.set)==Final_Date_Training)
     Initial_Date_Testing=Initial_Date_Testing = rownames(as.data.frame(scenario.set)[D+1,])
   }
+  if(length(which(rownames(dados2)==Initial_Date_Testing))==0){
+    #Final_Date_Testing=rownames(dados2[nrow(dados2),])
+    #Final_Date_Testing=Sys.Date()
+    while(length(which(rownames(dados2)==Initial_Date_Testing))==0){
+      dia=as.Date(Initial_Date_Testing)
+      new_day=dia+1
+      Initial_Date_Testing = as.character(new_day)
+    }
+  }
   if(Final_Date_Testing==('')){
     Final_Date_Testing=rownames(dados2[nrow(dados2),])
     #Final_Date_Testing=Sys.Date()
   }
   if(length(which(rownames(dados2)==Final_Date_Testing))==0){
-    Final_Date_Testing=rownames(dados2[nrow(dados2),])
+    #Final_Date_Testing=rownames(dados2[nrow(dados2),])
     #Final_Date_Testing=Sys.Date()
+    while(length(which(rownames(dados2)==Final_Date_Testing))==0){
+    dia=as.Date(Final_Date_Testing)
+    new_day=dia-1
+    Final_Date_Testing = as.character(new_day)
+    }
   }
 
 
@@ -190,7 +204,21 @@ ___________________________________________________________________
   for (k in 1:(nAtivos-1)){
     ativo = k+1
     #Envelope
+    test_logic = which(scenario.set[,ativo]==0)
+    if(length(test_logic)!=0){
+    test_logico=NULL
+    for( m in 2:length(test_logic)){
+      test_logico[m-1] = test_logic[m]-test_logic[m-1]
+    }
+    if(any(is.na(test_logico))==TRUE){
+      test_logico=0}
+    } else{ test_logico=0}
 
+
+    Test_logico_ =any(test_logico==1)
+    if(Test_logico_==TRUE){
+      MDM=0
+    } else {
     # Calculo das defasagens para cada ativo
     dat_MF <- data.frame(dados[,ativo])
     rownames(dat_MF)=rownames(dados)
@@ -213,7 +241,7 @@ ___________________________________________________________________
     MDM = 1/2*(abs((b_MF$Hq[1]-0.5))+abs(b_MF$Hq[11]-0.5))
     ## Not run:
     ## Results plot ####
-
+    }
 
     # Resultados das Probabilidades
 

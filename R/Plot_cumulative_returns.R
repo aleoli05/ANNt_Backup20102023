@@ -37,6 +37,14 @@ if(Until_Date ==('')){
   Until_Date = rownames(Comparativo[nrow(Comparativo),])
 }
 
+if(length(which(rownames(Comparativo)==Until_Date))==0){
+  while(length(which(rownames(Comparativo)==Until_Date))==0){
+    dia=as.Date(Until_Date)
+    new_day=dia-1
+    Until_Date = as.character(new_day)
+  }
+}
+
 Corte= which(rownames(as.data.frame(Comparativo))==as.Date(Until_Date))
 Coparativo_Backup = Comparativo
 Comparativo=Comparativo[1:Corte,]

@@ -18,14 +18,38 @@ Portfolio_backtesting <- function(Date_Initial_Backtesting,Date_Final_Backtestin
   load('~/RM.rda')
   load('~/Rf.rda')
   Comparativo_RETORNOS=data.frame(Comparativo_RETORNOS)
+
+
   if(Date_Initial_Bactesting==''){
     Corte1=1
   } else{
+
+    if(length(which(rownames(Comparativo_RETORNOS)==Date_Initial_Bactesting))==0){
+      while(length(which(rownames(Comparativo_RETORNOS)==Date_Initial_Bactesting))==0){
+        dia=as.Date(Date_Initial_Bactesting)
+        new_day=dia+1
+        Date_Initial_Bactesting = as.character(new_day)
+      }
+    }
+
+
   Corte1=which(rownames(as.data.frame(Comparativo_RETORNOS))==Date_Initial_Backtesting)
   }
+
+
   if(Date_Final_Backtesting==''){
     Corte2=nrow(Comparativo_RETORNOS)
   } else{
+
+
+    if(length(which(rownames(Comparativo_RETORNOS)==Date_Final_Bactesting))==0){
+      while(length(which(rownames(Comparativo_RETORNOS)==Date_Final_Bactesting))==0){
+        dia=as.Date(Date_Final_Bactesting)
+        new_day=dia-1
+        Date_Final_Bactesting = as.character(new_day)
+      }
+    }
+
   Corte2=which(rownames(as.data.frame(Comparativo_RETORNOS))==Date_Final_Backtesting)
   }
   Comparativo_RETORNOS=Comparativo_RETORNOS[Corte1:Corte2,]

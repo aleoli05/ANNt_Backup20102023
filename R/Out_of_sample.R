@@ -22,6 +22,7 @@ Out_of_sample <-function(Initial_Date_Out, Final_Date_Out){
   load("~/I_dataPredict.rda") # Carrega objeto scenario.set
   load("~/F_dataPredict.rda") # Carrega objeto scenario.set
   load("~/Initial_Date_Testing.rda")
+  load("~/Final_Date_Testing.rda")
   load("~/Final_Date_Training.rda")
   load("~/x1.rda")
   load('~/Pesos_MFractal_2.rda')
@@ -34,9 +35,29 @@ Out_of_sample <-function(Initial_Date_Out, Final_Date_Out){
   load('~/Weight_ANNt_Sharpe.rda')
 
   scenario.set = data.frame(scenario.set)
+  if(Initial_Date_Out==('')){
+    Initial_Date_Out=as.Date(Final_Date_Testing)+1
+  }
+
   if(Final_Date_Out==('')){
     Final_Date_Out=rownames(scenario.set[nrow(scenario.set),])
     #Final_Date_Testing=Sys.Date()
+  }
+
+  if(length(which(rownames(scenario.set)==Initial_Date_Out))==0){
+    while(length(which(rownames(scenario.set)==Initial_Date_Out))==0){
+      dia=as.Date(Initial_Date_Out)
+      new_day=dia+1
+      Initial_Date_Out = as.character(new_day)
+    }
+  }
+
+  if(length(which(rownames(scenario.set)==Final_Date_Out))==0){
+    while(length(which(rownames(scenario.set)==Final_Date_Out))==0){
+      dia=as.Date(Initial_Date_Out)
+      new_day=dia-1
+      Final_Date_Out = as.character(new_day)
+    }
   }
 
 
