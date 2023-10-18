@@ -70,8 +70,12 @@ if(Type_ANNt=='T1'){
   load("~/scenario.set.rda") # Carrega objeto scenario.set
   load("~/I_dataPredict.rda") # Carrega objeto scenario.set
   load("~/F_dataPredict.rda") # Carrega objeto scenario.set
+  if(exists('Initial_Date_Testing')==FALSE) {
   load("~/Initial_Date_Testing.rda")
+  }
+  if(exists('Final_Date_Testing')==FALSE){
   load("~/Final_Date_Training.rda")
+  }
   load("~/x1.rda")
   if(file.exists("~/Signal_Sharpe.rda")==TRUE){
   load("~/Signal_Sharpe.rda")
@@ -112,7 +116,7 @@ ___________________________________________________________________
     Final_Date_Testing=rownames(dados2[nrow(dados2),])
     #Final_Date_Testing=Sys.Date()
   }
-  if(class(which(rownames(dados2)==Final_Date_Testing))=='integer'){
+  if(length(which(rownames(dados2)==Final_Date_Testing))==0){
     Final_Date_Testing=rownames(dados2[nrow(dados2),])
     #Final_Date_Testing=Sys.Date()
   }
