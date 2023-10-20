@@ -466,7 +466,9 @@ ___________________________________________________________________
 
   } else{
   #######################Verify if ANNt_Oliveira_Ceretta_S was ativate###########
-    load('~/weight_test.rda')
+    if (file.exists('~/weight_test.rda')==TRUE){
+    load('~/weight_test.rda') } else{weight_test=NULL}
+
      if(Signal_Sharpe==0 | length(weight_test)!=ncol(all.returns)){
 
       n_testing=which(rownames(dados2)==Final_Date_Testing)-which(rownames(dados2)==Initial_Date_Testing)
