@@ -9,7 +9,7 @@ Gen_portfolios(
   Initial_Date_Testing,
   Final_Date_Testing,
   Rf,
-  Type_ANNt
+  type_ANNt
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ Gen_portfolios(
 
 \item{Rf}{Risk free rate}
 
-\item{Type_ANNt}{Select type ANNt:
+\item{type_ANNt}{Select type ANNt:
 "T1"= NNet_Signal_Traning;
 "T2"= NNet_t_Training;
 "T3"= MC_Signal_Training;
@@ -39,7 +39,7 @@ N_Assets <- 3
 Initial_Date_Testing <- c('2023-01-03')
 Final_Date_Testing <- c('')
 Rf <- 0
-Type_ANNt <- 'T8'
+type_ANNt <- 'T8'
 # Generate assets portfolio (maximum N assets specified)
 Gen_portfolios(3,'2023-01-03','',0,'T8')
 

@@ -159,9 +159,21 @@ options(warn=-1)
 
 all.returns <- TodosAtivosPredict
 while (nrow(all.returns)<ncol(all.returns)){
-  Inicio=as.Date(rownames(all.returns)[1])-(ncol(all.returns)-nrow(all.returns))
+  Inicio=as.character(as.Date(rownames(all.returns)[1])-(ncol(all.returns)-nrow(all.returns)))
   Fim=as.Date(rownames(all.returns)[nrow(all.returns)])
-  all.returns=scenario.set[(which(rownames(scenario.set)==Inicio)-10):which(rownames(scenario.set)==Fim),]
+
+  while(length(which(rownames(scenario.set)==Inicio))==0){
+    dia=as.Date(Inicio)
+    new_day=dia+1
+    Inicio = as.character(new_day)}
+
+    while(length(which(rownames(scenario.set)==Fim))==0){
+      dia=as.Date(Fim)
+      new_day=dia+1
+      Fim = as.character(new_day)}
+
+
+  all.returns=scenario.set[(which(rownames(scenario.set)==as.character(Inicio))-10):which(rownames(scenario.set)==Fim),]
 }
 
 Contador=round(nrow(all.returns),-1)
