@@ -117,7 +117,7 @@ if(type_ANNt=='T1'){
   if(exists('Final_Date_Testing')==FALSE){
   load("~/Final_Date_Training.rda")
   }
-  load("~/x1.rda")
+
   if(file.exists("~/Signal_Sharpe.rda")==TRUE){
   load("~/Signal_Sharpe.rda")
   }else{
@@ -149,6 +149,7 @@ ___________________________________________________________________
   n_assets=N_Assets
 
   if(Initial_Date_Testing==('')){
+    load("~/x1.rda")
     Final_Date_Training=x1
     D = which(rownames(scenario.set)==Final_Date_Training)
     Initial_Date_Testing=Initial_Date_Testing = rownames(as.data.frame(scenario.set)[D+1,])
