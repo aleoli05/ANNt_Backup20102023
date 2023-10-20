@@ -158,13 +158,25 @@ options(warn=-1)
 
 
 all.returns <- TodosAtivosPredict
+while (nrow(all.returns)<ncol(all.returns)){
+  Inicio=as.Date(rownames(all.returns)[1])-(ncol(all.returns)-nrow(all.returns))
+  Fim=as.Date(rownames(all.returns)[nrow(all.returns)])
+  all.returns=scenario.set[(which(rownames(scenario.set)==Inicio)-10):which(rownames(scenario.set)==Fim),]
+}
+
 Contador=round(nrow(all.returns),-1)
 #if(nrow(all.returns)-Contador<0){
 Contador=Contador-10
 #}
 Remover= nrow(all.returns)-Contador
-if(ncol(all.returns)>100){
+if(ncol(all.returns)>10){
   all.returns <- all.returns[1:(nrow(all.returns)-Remover),]
+
+  if (nrow(all.returns)-ncol(all.returns)<10){
+    Inicio=as.Date(rownames(all.returns)[1])
+    Fim=as.Date(rownames(all.returns)[nrow(all.returns)])
+    all.returns=scenario.set[(which(rownames(scenario.set)==Inicio)-20):which(rownames(scenario.set)==Fim),]
+  }
 }
 
 ####### set up portfolio with objetive and constraints
