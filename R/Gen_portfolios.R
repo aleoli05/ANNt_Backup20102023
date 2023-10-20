@@ -400,6 +400,11 @@ ___________________________________________________________________
 
 
   all.returns <- TodosAtivosPredict
+  while (nrow(all.returns)<ncol(all.returns)){
+    Inicio=as.Date(rownames(all.returns)[1])-(ncol(all.returns)-nrow(all.returns))
+    Fim=as.Date(rownames(all.returns)[nrow(all.returns)])
+    all.returns=scenario.set[(which(rownames(scenario.set)==Inicio)-10):which(rownames(scenario.set)==Fim),]
+  }
  # y=0
  #  for (k in 1:(nAtivos-1)){
   #  ativo = k
