@@ -400,16 +400,16 @@ ___________________________________________________________________
 
 
   all.returns <- TodosAtivosPredict
-  y=0
-  for (k in 1:(nAtivos-1)){
-    ativo = k
+ # y=0
+ #  for (k in 1:(nAtivos-1)){
+  #  ativo = k
     #Envelope
-      for( m in 1:nrow(all.returns)){
-          if(all.returns[m,k]==0){
-          all.returns[m,k]==0.0000000001
-          x=1
-          y=y+x
-        }}}
+    #  for( m in 1:nrow(all.returns)){
+      #    if(all.returns[m,k]==0){
+      #    all.returns[m,k]==0.0000000001
+       #   x=1
+      #    y=y+x
+      #  }}}
 
   Contador=round(nrow(all.returns),-1)
   #if(nrow(all.returns)-Contador<0){
@@ -418,6 +418,12 @@ ___________________________________________________________________
   Remover= nrow(all.returns)-Contador
   if(ncol(all.returns)>10){
     all.returns <- all.returns[1:(nrow(all.returns)-Remover),]
+
+    if (nrow(all.returns)-ncol(all.returns)<10){
+      Inicio=as.Date(rownames(all.returns)[1])
+      Fim=as.Date(rownames(all.returns)[nrow(all.returns)])
+      all.returns=scenario.set[(which(rownames(scenario.set)==Inicio)-20):which(rownames(scenario.set)==Fim),]
+    }
   }
   ##############################################################################
   ######## Sharpe Calculate
@@ -473,7 +479,7 @@ ___________________________________________________________________
 
   # map off efficient frontier (for variance risk)
   eff.frontier <- create.EfficientFrontier(R = all.returns, portfolio = port.sec,
-                                           n.portfolio = 2000, type = "DEoptim")
+                                           n.portfolio = 2000, type = "mean-StdDev")
 
   # Daily Sharpe ratio
   rf=(1+Rf)^(1/252)-1
